@@ -2,155 +2,262 @@
 <html lang="ja">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>旅のしおり｜ホーム</title>
+    <meta name="theme-color" content="#f09199">
+
+    <meta name="description" content="旅行の計画や予定をまとめられる旅のしおりアプリ">
+
+    <title>旅のしおり</title>
+
+    <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+
 </head>
+
 
 <body>
 
-    <!-- ヘッダー -->
-    <header class="header">
+    <!-- =========================================
+         ヘッダー
+         ========================================= -->
+
+    <header class="app-header">
+
         <h1>旅のしおり</h1>
-        <p>旅行の計画をかんたんにまとめよう</p>
+
+        <p>
+            旅行の計画をかんたんにまとめよう
+        </p>
+
     </header>
 
-    <main class="main">
 
-        <!-- 新しい旅を作る -->
-        <section class="create-section">
+    <!-- =========================================
+         メイン
+         ========================================= -->
 
-            <h2>新しい旅を作る</h2>
+    <main class="main-content">
 
-            <div class="form-card">
 
-                <div class="form-group">
-                    <label for="trip-title">旅行タイトル</label>
-                    <input type="text" id="trip-title" placeholder="例：京都旅行">
-                </div>
+        <!-- =====================================
+             新しい旅を作る
+             ===================================== -->
 
-                <div class="form-group">
-                    <label for="destination">旅行先</label>
-                    <input type="text" id="destination" placeholder="例：京都・大阪">
-                </div>
+        <section class="content-section">
 
-                <div class="form-group">
-                    <label for="start-date">旅行開始日</label>
+            <div class="section-title">
+
+                <h2>新しい旅を作る</h2>
+
+            </div>
+
+
+            <!-- 旅行タイトル -->
+
+            <div class="form-group">
+
+                <label for="trip-title">
+                    旅行のタイトル
+                </label>
+
+                <input type="text" id="trip-title" placeholder="例：京都旅行">
+
+            </div>
+
+
+            <!-- 旅行先 -->
+
+            <div class="form-group">
+
+                <label for="destination">
+                    旅行先
+                </label>
+
+                <input type="text" id="destination" placeholder="例：京都">
+
+            </div>
+
+
+            <!-- 日程 -->
+
+            <div class="form-group">
+
+                <label>
+                    旅行の日程
+                </label>
+
+                <div class="date-input-row">
+
                     <input type="date" id="start-date">
-                </div>
 
-                <div class="form-group">
-                    <label for="end-date">旅行終了日</label>
+                    <span>～</span>
+
                     <input type="date" id="end-date">
+
                 </div>
 
-                <!-- 旅の日程 -->
-                <div class="form-group"> <label>旅の日程</label>
-                    <div id="schedule-list"> <!-- 日程をここに追加 --> </div> <button type="button" class="secondary-button"
-                        id="add-schedule-button"> ＋ 日程を追加 </button>
+            </div>
+
+
+            <!-- =================================
+                 旅の日程
+                 ================================= -->
+
+            <div class="form-group">
+
+                <label>
+                    旅の日程
+                </label>
+
+                <div id="schedule-list">
+                    <!-- 日程をここに追加 -->
                 </div>
 
-                <div class="form-group">
-                    <label>旅行の予算</label>
-                    <div id="budget-list">
-                        <!-- 予算項目をここに追加 -->
-                    </div>
-                    <button type="button" class="secondary-button" id="add-budget-button">
-                        ＋ 予算を追加
-                    </button>
-                </div>
-
-                <div class="form-group">
-                    <label for="trip-memo">旅行メモ</label>
-                    <textarea id="trip-memo" placeholder="旅行についてのメモを入力"></textarea>
-                </div>
-
-                <button class="primary-button" id="create-trip-button">
-                    ＋ 旅のしおりを作成
+                <button type="button" class="secondary-button" id="add-schedule-button">
+                    ＋ 日程を追加
                 </button>
 
             </div>
 
+
+            <!-- =================================
+                 旅行の予算
+                 ================================= -->
+
+            <div class="form-group">
+
+                <label>
+                    旅行の予算
+                </label>
+
+                <div id="budget-list">
+                    <!-- 予算項目をここに追加 -->
+                </div>
+
+                <button type="button" class="secondary-button" id="add-budget-button">
+                    ＋ 予算を追加
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 メモ
+                 ================================= -->
+
+            <div class="form-group">
+
+                <label for="trip-memo">
+                    メモ
+                </label>
+
+                <textarea id="trip-memo" rows="5" placeholder="旅行についてのメモを入力してください"></textarea>
+
+            </div>
+
+
+            <!-- =================================
+                 作成ボタン
+                 ================================= -->
+
+            <button type="button" class="primary-button" id="create-trip-button">
+                旅のしおりを作る
+            </button>
+
+
         </section>
 
-        <!-- 最近の旅行 -->
-        <section class="trip-section">
 
-            <div class="section-title">
-                <h2>最近の旅行</h2>
+        <!-- =====================================
+             最近の旅
+             ===================================== -->
 
-                <a href="travel.html" class="text-button">
+        <section class="content-section">
+
+            <div class="section-header">
+
+                <h2>最近の旅</h2>
+
+                <a href="travel.html" class="section-link">
                     すべて見る
                 </a>
+
             </div>
 
-            <div class="trip-list" id="home-trip-list">
-                <!-- JavaScriptで旅行を表示 -->
+
+            <div id="home-trip-list" class="trip-list">
+                <!-- 作成した旅行をここに表示 -->
             </div>
 
         </section>
+
 
     </main>
 
-    <!-- 下部ナビゲーション -->
-    <nav class="bottom-nav">
+
+    <!-- =========================================
+         下部ナビゲーション
+         ========================================= -->
+
+    <nav class="bottom-navigation">
 
         <a href="index.html" class="nav-item active">
-            <span>🏠</span>
-            <small>ホーム</small>
+
+            <span class="nav-icon">🏠</span>
+
+            <span class="nav-label">
+                ホーム
+            </span>
+
         </a>
+
 
         <a href="travel.html" class="nav-item">
-            <span>📖</span>
-            <small>旅行</small>
+
+            <span class="nav-icon">🗺️</span>
+
+            <span class="nav-label">
+                旅行
+            </span>
+
         </a>
+
 
         <a href="favorite.html" class="nav-item">
-            <span>⭐</span>
-            <small>お気に入り</small>
+
+            <span class="nav-icon">♡</span>
+
+            <span class="nav-label">
+                お気に入り
+            </span>
+
         </a>
 
+
         <a href="setting.html" class="nav-item">
-            <span>⚙️</span>
-            <small>設定</small>
+
+            <span class="nav-icon">⚙️</span>
+
+            <span class="nav-label">
+                設定
+            </span>
+
         </a>
 
     </nav>
 
-    <!-- JavaScript -->
+
+    <!-- =========================================
+         JavaScript
+         ========================================= -->
+
     <script src="script.js"></script>
 
-    <script>
-        /*
-         * PWA
-         * Service Workerを登録
-         */
-        if ("serviceWorker" in navigator) {
-
-            window.addEventListener("load", function () {
-
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then(function () {
-                        console.log(
-                            "Service Workerを登録しました。"
-                        );
-                    })
-                    .catch(function (error) {
-                        console.error(
-                            "Service Workerの登録に失敗しました。",
-                            error
-                        );
-                    });
-
-            });
-
-        }
-    </script>
 
 </body>
 
