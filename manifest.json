@@ -1,8 +1,9 @@
 {
     "name": "旅のしおり",
     "short_name": "旅のしおり",
-    "description": "旅行の計画や予定をまとめられる旅のしおりアプリ",
+    "description": "旅行の計画から当日の確認まで簡単に使える旅のしおりアプリ",
     "start_url": "./index.html",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#fff8f8",
     "theme_color": "#f09199",
