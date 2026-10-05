@@ -3,13 +3,11 @@
  * 共通JavaScript
  * ========================================================= */
 
-
 /* =========================================================
  * 設定
  * ========================================================= */
 
 const STORAGE_KEY = "travel-shiori-data";
-
 
 /* =========================================================
  * データ取得
@@ -37,7 +35,6 @@ function getTrips() {
     }
 }
 
-
 /* =========================================================
  * データ保存
  * ========================================================= */
@@ -63,6 +60,11 @@ function saveTrips(trips) {
     }
 }
 
+/* =========================================================
+ * 編集中の旅行ID
+ * ========================================================= */
+
+let editingTripId = null;
 
 /* =========================================================
  * HTMLエスケープ
@@ -81,7 +83,6 @@ function escapeHTML(value) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
-
 
 /* =========================================================
  * 日付表示
@@ -108,7 +109,6 @@ function formatDate(dateString) {
         "日"
     );
 }
-
 
 /* =========================================================
  * 日程の種類
@@ -141,12 +141,11 @@ const SCHEDULE_TYPES = [
     }
 ];
 
-
 /* =========================================================
  * 日程入力欄を追加
  * ========================================================= */
 
-function addScheduleForm() {
+function addScheduleForm(schedule) {
 
     const scheduleList =
         document.getElementById("schedule-list");
@@ -183,7 +182,6 @@ function addScheduleForm() {
 
         </div>
 
-
         <div class="form-group">
 
             <label>時間</label>
@@ -194,7 +192,6 @@ function addScheduleForm() {
             >
 
         </div>
-
 
         <div class="form-group">
 
@@ -208,7 +205,6 @@ function addScheduleForm() {
 
         </div>
 
-
         <div class="form-group">
 
             <label>交通手段・詳細</label>
@@ -216,11 +212,10 @@ function addScheduleForm() {
             <input
                 type="text"
                 class="schedule-detail"
-                placeholder="例：〇〇線〇〇行き3番ホーム"
+                placeholder="例：〇〇線〇〇行き〇番ホーム"
             >
 
         </div>
-
 
         <div class="form-group">
 
@@ -234,7 +229,6 @@ function addScheduleForm() {
 
         </div>
 
-
         <button
             type="button"
             class="schedule-delete-button"
@@ -244,12 +238,10 @@ function addScheduleForm() {
 
     `;
 
-
     const deleteButton =
         scheduleForm.querySelector(
             ".schedule-delete-button"
         );
-
 
     deleteButton.addEventListener(
         "click",
@@ -260,10 +252,8 @@ function addScheduleForm() {
         }
     );
 
-
     scheduleList.appendChild(scheduleForm);
 }
-
 
 /* =========================================================
  * 日程データ取得
@@ -278,15 +268,12 @@ function getScheduleData() {
         return [];
     }
 
-
     const forms =
         scheduleList.querySelectorAll(
             ".schedule-form"
         );
 
-
     const schedules = [];
-
 
     forms.forEach(function (form, index) {
 
@@ -295,30 +282,25 @@ function getScheduleData() {
                 ".schedule-type"
             )?.value || "その他";
 
-
         const time =
             form.querySelector(
                 ".schedule-time"
             )?.value || "";
-
 
         const place =
             form.querySelector(
                 ".schedule-place"
             )?.value.trim() || "";
 
-
         const detail =
             form.querySelector(
                 ".schedule-detail"
             )?.value.trim() || "";
 
-
         const memo =
             form.querySelector(
                 ".schedule-memo"
             )?.value.trim() || "";
-
 
         schedules.push({
 
@@ -341,7 +323,6 @@ function getScheduleData() {
         });
 
     });
-
 
     return schedules;
 }
@@ -397,7 +378,6 @@ function addBudgetForm() {
 
             </select>
 
-
             <input
                 type="number"
                 class="budget-amount"
@@ -410,7 +390,6 @@ function addBudgetForm() {
 
         </div>
 
-
         <button
             type="button"
             class="budget-delete-button"
@@ -420,12 +399,10 @@ function addBudgetForm() {
 
     `;
 
-
     const deleteButton =
         budgetForm.querySelector(
             ".budget-delete-button"
         );
-
 
     deleteButton.addEventListener(
         "click",
@@ -435,7 +412,6 @@ function addBudgetForm() {
 
         }
     );
-
 
     budgetList.appendChild(
         budgetForm
@@ -455,15 +431,12 @@ function getBudgetData() {
         return [];
     }
 
-
     const forms =
         budgetList.querySelectorAll(
             ".budget-form"
         );
 
-
     const budgets = [];
-
 
     forms.forEach(function (form, index) {
 
@@ -472,14 +445,12 @@ function getBudgetData() {
                 ".budget-category"
             )?.value || "その他";
 
-
         const amount =
             Number(
                 form.querySelector(
                     ".budget-amount"
                 )?.value || 0
             );
-
 
         if (amount > 0) {
 
@@ -514,109 +485,20 @@ function getBudgetData() {
 
 function createTrip() {
 
-    const titleElement =
-        document.getElementById("trip-title");
-
-    const destinationElement =
-        document.getElementById("destination");
-
-    const startDateElement =
-        document.getElementById("start-date");
-
-    const endDateElement =
-        document.getElementById("end-date");
-
-    const memoElement =
-        document.getElementById("trip-memo");
-
-
-    if (
-        !titleElement ||
-        !destinationElement ||
-        !startDateElement ||
-        !endDateElement
-    ) {
-        return;
-    }
-
-
     const title =
-        titleElement.value.trim();
+        document.getElementById("trip-title").value.trim();
 
     const destination =
-        destinationElement.value.trim();
+        document.getElementById("destination").value.trim();
 
     const startDate =
-        startDateElement.value;
+        document.getElementById("start-date").value;
 
     const endDate =
-        endDateElement.value;
+        document.getElementById("end-date").value;
 
     const memo =
-        memoElement
-            ? memoElement.value.trim()
-            : "";
-
-
-    /* -----------------------------------------
-     * 入力チェック
-     * ----------------------------------------- */
-
-    if (!title) {
-
-        alert("旅行タイトルを入力してください。");
-
-        titleElement.focus();
-
-        return;
-    }
-
-
-    if (!destination) {
-
-        alert("旅行先を入力してください。");
-
-        destinationElement.focus();
-
-        return;
-    }
-
-
-    if (!startDate) {
-
-        alert("旅行開始日を入力してください。");
-
-        startDateElement.focus();
-
-        return;
-    }
-
-
-    if (!endDate) {
-
-        alert("旅行終了日を入力してください。");
-
-        endDateElement.focus();
-
-        return;
-    }
-
-
-    if (startDate > endDate) {
-
-        alert(
-            "旅行終了日は旅行開始日以降の日付にしてください。"
-        );
-
-        endDateElement.focus();
-
-        return;
-    }
-
-
-    /* -----------------------------------------
-     * 日程取得
-     * ----------------------------------------- */
+        document.getElementById("trip-memo").value.trim();
 
     const schedules =
         getScheduleData();
@@ -625,105 +507,242 @@ function createTrip() {
         getBudgetData();
 
 
-    /* -----------------------------------------
-     * 新しい旅行
-     * ----------------------------------------- */
-
-    const newTrip = {
-
-        id:
-            Date.now().toString(),
-
-        title:
-            title,
-
-        destination:
-            destination,
-
-        startDate:
-            startDate,
-
-        endDate:
-            endDate,
-
-        memo:
-            memo,
-
-        schedules:
-            schedules,
-
-        plans:
-            [],
-
-        budgets:
-            budgets,
-
-        favorite:
-            false,
-
-        createdAt:
-            new Date().toISOString()
-
-    };
-
-
-    /* -----------------------------------------
-     * 保存
-     * ----------------------------------------- */
-
-    const trips =
-        getTrips();
-
-
-    trips.push(newTrip);
-
-
-    const saved =
-        saveTrips(trips);
-
-
-    if (!saved) {
+    if (!title) {
+        alert("旅行タイトルを入力してください。");
         return;
     }
 
-
-    /* -----------------------------------------
-     * 入力欄をクリア
-     * ----------------------------------------- */
-
-    titleElement.value = "";
-
-    destinationElement.value = "";
-
-    startDateElement.value = "";
-
-    endDateElement.value = "";
-
-    if (memoElement) {
-        memoElement.value = "";
+    if (!destination) {
+        alert("旅行先を入力してください。");
+        return;
     }
 
+    const trips = getTrips();
 
-    const scheduleList =
-        document.getElementById("schedule-list");
+    /* =====================================================
+       編集の場合
+    ===================================================== */
 
+    if (editingTripId) {
 
-    if (scheduleList) {
-        scheduleList.innerHTML = "";
+        const index = trips.findIndex(function (trip) {
+            return trip.id === editingTripId;
+        });
+
+        if (index !== -1) {
+
+            trips[index].title = title;
+            trips[index].destination = destination;
+            trips[index].startDate = startDate;
+            trips[index].endDate = endDate;
+            trips[index].memo = memo;
+            trips[index].schedules = schedules;
+            trips[index].budgets = budgets;
+            trips[index].updatedAt = Date.now();
+
+            saveTrips(trips);
+
+            alert("しおりを更新しました。");
+
+            editingTripId = null;
+
+            resetTripForm();
+
+            displayTrips();
+
+            return;
+        }
     }
 
+    /* =====================================================
+       新規作成
+    ===================================================== */
 
-    /* -----------------------------------------
-     * 表示更新
-     * ----------------------------------------- */
+    const newTrip = {
 
-    displayTrips();
+        id: Date.now().toString(),
 
+        title: title,
+
+        destination: destination,
+
+        startDate: startDate,
+
+        endDate: endDate,
+
+        memo: memo,
+
+        schedules: schedules,
+
+        budgets: budgets,
+
+        favorite: false,
+
+        createdAt: Date.now(),
+
+        updatedAt: Date.now()
+
+    };
+
+    trips.unshift(newTrip);
+
+    saveTrips(trips);
 
     alert("旅のしおりを作成しました。");
 
+    resetTripForm();
+
+    displayTrips();
 }
 
+/* -----------------------------------------
+ * 入力チェック
+ * ----------------------------------------- */
+
+if (!title) {
+
+    alert("旅行タイトルを入力してください。");
+
+    titleElement.focus();
+
+    return;
+}
+
+if (!destination) {
+
+    alert("旅行先を入力してください。");
+
+    destinationElement.focus();
+
+    return;
+}
+
+if (!startDate) {
+
+    alert("旅行開始日を入力してください。");
+
+    startDateElement.focus();
+
+    return;
+}
+
+if (!endDate) {
+
+    alert("旅行終了日を入力してください。");
+
+    endDateElement.focus();
+
+    return;
+}
+
+if (startDate > endDate) {
+
+    alert(
+        "旅行終了日は旅行開始日以降の日付にしてください。"
+    );
+
+    endDateElement.focus();
+
+    return;
+}
+
+/* -----------------------------------------
+ * 日程取得
+ * ----------------------------------------- */
+
+const schedules =
+    getScheduleData();
+
+const budgets =
+    getBudgetData();
+
+/* -----------------------------------------
+ * 新しい旅行
+ * ----------------------------------------- */
+
+const newTrip = {
+
+    id:
+        Date.now().toString(),
+
+    title:
+        title,
+
+    destination:
+        destination,
+
+    startDate:
+        startDate,
+
+    endDate:
+        endDate,
+
+    memo:
+        memo,
+
+    schedules:
+        schedules,
+
+    plans:
+        [],
+
+    budgets:
+        budgets,
+
+    favorite:
+        false,
+
+    createdAt:
+        new Date().toISOString()
+
+};
+
+/* -----------------------------------------
+ * 保存
+ * ----------------------------------------- */
+
+const trips =
+    getTrips();
+
+trips.push(newTrip);
+
+const saved =
+    saveTrips(trips);
+
+if (!saved) {
+    return;
+}
+
+/* -----------------------------------------
+ * 入力欄をクリア
+ * ----------------------------------------- */
+
+titleElement.value = "";
+
+destinationElement.value = "";
+
+startDateElement.value = "";
+
+endDateElement.value = "";
+
+if (memoElement) {
+    memoElement.value = "";
+}
+
+const scheduleList =
+    document.getElementById("schedule-list");
+
+if (scheduleList) {
+    scheduleList.innerHTML = "";
+}
+
+/* -----------------------------------------
+ * 表示更新
+ * ----------------------------------------- */
+
+displayTrips();
+
+alert("旅のしおりを作成しました。");
 
 /* =========================================================
  * 旅行カード表示
@@ -734,19 +753,16 @@ function displayTrips() {
     const trips =
         getTrips();
 
-
     const tripLists =
         document.querySelectorAll(
             ".trip-list"
         );
-
 
     tripLists.forEach(
         function (tripList) {
 
             let displayTripsData =
                 trips;
-
 
             /* -----------------------------------------
              * ホーム
@@ -764,7 +780,6 @@ function displayTrips() {
                         .reverse()
                         .slice(0, 3);
             }
-
 
             /* -----------------------------------------
              * お気に入り
@@ -784,7 +799,6 @@ function displayTrips() {
 
             }
 
-
             /* -----------------------------------------
              * 旅行一覧
              * ----------------------------------------- */
@@ -800,7 +814,6 @@ function displayTrips() {
                         .reverse();
 
             }
-
 
             /* -----------------------------------------
              * 旅行がない場合
@@ -851,7 +864,6 @@ function displayTrips() {
                 return;
             }
 
-
             /* -----------------------------------------
              * 旅行カード作成
              * ----------------------------------------- */
@@ -867,7 +879,6 @@ function displayTrips() {
                                 )
                                     ? trip.schedules
                                     : [];
-
 
                             return `
 
@@ -891,7 +902,6 @@ function displayTrips() {
 
                                         </div>
 
-
                                         <button
                                             type="button"
                                             class="favorite-button"
@@ -904,7 +914,6 @@ function displayTrips() {
                                         </button>
 
                                     </div>
-
 
                                     <p class="trip-date">
 
@@ -920,7 +929,6 @@ function displayTrips() {
 
                                     </p>
 
-
                                     ${schedules.length > 0
                                     ? `
                                                 <p class="trip-schedule-count">
@@ -929,7 +937,6 @@ function displayTrips() {
                                               `
                                     : ""
                                 }
-
 
                                     ${trip.memo
                                     ? `
@@ -942,7 +949,6 @@ function displayTrips() {
                                     : ""
                                 }
 
-
                                     <div class="trip-card-buttons">
 
                                         <button
@@ -952,7 +958,6 @@ function displayTrips() {
                                         >
                                             しおりを見る
                                         </button>
-
 
                                         <button
                                             type="button"
@@ -964,6 +969,12 @@ function displayTrips() {
 
                                     </div>
 
+                                    <button
+                                        class="edit-trip-button"
+                                        onclick="editTrip('${trip.id}')"
+                                    >
+                                        編集
+                                    </button>
 
                                     <button
                                         type="button"
@@ -985,6 +996,126 @@ function displayTrips() {
     );
 }
 
+/* =========================================================
+ * 旅行を編集する
+ * ========================================================= */
+
+function editTrip(tripId) {
+
+    const trips = getTrips();
+
+    const trip = trips.find(function (item) {
+        return item.id === tripId;
+    });
+
+    if (!trip) {
+        alert("旅行データが見つかりません。");
+        return;
+    }
+
+    editingTripId = tripId;
+
+    /* 基本情報 */
+    document.getElementById("trip-title").value =
+        trip.title || "";
+
+    document.getElementById("destination").value =
+        trip.destination || "";
+
+    document.getElementById("start-date").value =
+        trip.startDate || "";
+
+    document.getElementById("end-date").value =
+        trip.endDate || "";
+
+    document.getElementById("trip-memo").value =
+        trip.memo || "";
+
+    /* =====================================================
+       日程を読み込む
+    ===================================================== */
+
+    const scheduleList =
+        document.getElementById("schedule-list");
+
+    if (scheduleList) {
+
+        scheduleList.innerHTML = "";
+
+        if (trip.schedules && trip.schedules.length > 0) {
+
+            trip.schedules.forEach(function (schedule) {
+
+                addScheduleForm(schedule);
+
+            });
+
+        }
+    }
+
+    /* =====================================================
+       予算を読み込む
+    ===================================================== */
+
+    const budgetList =
+        document.getElementById("budget-list");
+
+    if (budgetList) {
+
+        budgetList.innerHTML = "";
+
+        if (trip.budgets && trip.budgets.length > 0) {
+
+            trip.budgets.forEach(function (budget) {
+
+                addBudgetForm(budget);
+
+            });
+
+        }
+    }
+
+    /* ボタンの表示を変更 */
+    const createButton =
+        document.getElementById("create-trip-button");
+
+    if (createButton) {
+
+        createButton.textContent =
+            "✏️ しおりを更新";
+    }
+
+    /* キャンセルボタンを表示 */
+    let cancelButton =
+        document.getElementById("cancel-edit-button");
+
+    if (!cancelButton) {
+
+        cancelButton =
+            document.createElement("button");
+
+        cancelButton.type = "button";
+        cancelButton.id = "cancel-edit-button";
+        cancelButton.className = "secondary-button";
+
+        cancelButton.textContent =
+            "編集をキャンセル";
+
+        createButton.parentNode.insertBefore(
+            cancelButton,
+            createButton
+        );
+
+        cancelButton.addEventListener(
+            "click",
+            cancelEdit
+        );
+    }
+
+    /* ホーム画面へ移動 */
+    window.location.href = "index.html#edit";
+
+}
 
 /* =========================================================
  * お気に入り切り替え
@@ -995,7 +1126,6 @@ function toggleFavorite(tripId) {
     const trips =
         getTrips();
 
-
     const trip =
         trips.find(
             function (item) {
@@ -1003,22 +1133,17 @@ function toggleFavorite(tripId) {
             }
         );
 
-
     if (!trip) {
         return;
     }
 
-
     trip.favorite =
         !trip.favorite;
 
-
     saveTrips(trips);
-
 
     displayTrips();
 }
-
 
 /* =========================================================
  * 旅行を見る
@@ -1035,14 +1160,12 @@ function openTrip(tripId) {
     const trips =
         getTrips();
 
-
     const trip =
         trips.find(
             function (item) {
                 return item.id === tripId;
             }
         );
-
 
     if (!trip) {
 
@@ -1051,7 +1174,6 @@ function openTrip(tripId) {
         return;
     }
 
-
     /*
      * 共有表示と同じ画面を利用
      */
@@ -1059,16 +1181,13 @@ function openTrip(tripId) {
     const data =
         encodeShareData(trip);
 
-
     const url =
         "share.html?data=" +
         encodeURIComponent(data);
 
-
     window.location.href =
         url;
 }
-
 
 /* =========================================================
  * 旅行削除
@@ -1079,7 +1198,6 @@ function deleteTrip(tripId) {
     const trips =
         getTrips();
 
-
     const trip =
         trips.find(
             function (item) {
@@ -1087,11 +1205,9 @@ function deleteTrip(tripId) {
             }
         );
 
-
     if (!trip) {
         return;
     }
-
 
     const result =
         confirm(
@@ -1100,11 +1216,9 @@ function deleteTrip(tripId) {
             "」を削除しますか？"
         );
 
-
     if (!result) {
         return;
     }
-
 
     const newTrips =
         trips.filter(
@@ -1113,13 +1227,10 @@ function deleteTrip(tripId) {
             }
         );
 
-
     saveTrips(newTrips);
-
 
     displayTrips();
 }
-
 
 /* =========================================================
  * 全データ削除
@@ -1130,7 +1241,6 @@ function deleteAllTrips() {
     const trips =
         getTrips();
 
-
     if (trips.length === 0) {
 
         alert("削除する旅行データがありません。");
@@ -1138,30 +1248,24 @@ function deleteAllTrips() {
         return;
     }
 
-
     const result =
         confirm(
             "すべての旅行データを削除しますか？\n" +
             "この操作は元に戻せません。"
         );
 
-
     if (!result) {
         return;
     }
-
 
     localStorage.removeItem(
         STORAGE_KEY
     );
 
-
     displayTrips();
-
 
     alert("すべての旅行データを削除しました。");
 }
-
 
 /* =========================================================
  * 共有用データをBase64に変換
@@ -1172,13 +1276,10 @@ function encodeShareData(trip) {
     const json =
         JSON.stringify(trip);
 
-
     const bytes =
         new TextEncoder().encode(json);
 
-
     let binary = "";
-
 
     bytes.forEach(
         function (byte) {
@@ -1186,10 +1287,8 @@ function encodeShareData(trip) {
         }
     );
 
-
     const base64 =
         btoa(binary);
-
 
     /*
      * URLに使いやすい形へ変換
@@ -1201,7 +1300,6 @@ function encodeShareData(trip) {
         .replace(/=+$/, "");
 }
 
-
 /* =========================================================
  * 共有トークン作成
  * ========================================================= */
@@ -1210,7 +1308,6 @@ function createShareToken() {
 
     const bytes =
         new Uint8Array(12);
-
 
     if (
         window.crypto &&
@@ -1234,7 +1331,6 @@ function createShareToken() {
         }
     }
 
-
     return Array.from(bytes)
         .map(
             function (byte) {
@@ -1246,7 +1342,6 @@ function createShareToken() {
         .join("");
 }
 
-
 /* =========================================================
  * 共有URL作成
  * ========================================================= */
@@ -1256,10 +1351,8 @@ function createShareURL(trip) {
     const token =
         createShareToken();
 
-
     const data =
         encodeShareData(trip);
-
 
     const baseURL =
         window.location.href
@@ -1267,7 +1360,6 @@ function createShareURL(trip) {
                 0,
                 window.location.href.lastIndexOf("/") + 1
             );
-
 
     return (
         baseURL +
@@ -1279,7 +1371,6 @@ function createShareURL(trip) {
     );
 }
 
-
 /* =========================================================
  * 共有
  * ========================================================= */
@@ -1289,14 +1380,12 @@ async function shareTrip(tripId) {
     const trips =
         getTrips();
 
-
     const trip =
         trips.find(
             function (item) {
                 return item.id === tripId;
             }
         );
-
 
     if (!trip) {
 
@@ -1305,10 +1394,8 @@ async function shareTrip(tripId) {
         return;
     }
 
-
     const shareURL =
         createShareURL(trip);
-
 
     /*
      * スマートフォンの共有機能
@@ -1355,14 +1442,12 @@ async function shareTrip(tripId) {
         }
     }
 
-
     /*
      * PCなどではコピー
      */
 
     copyShareURL(shareURL);
 }
-
 
 /* =========================================================
  * 共有URLコピー
@@ -1412,9 +1497,7 @@ async function copyShareURL(url) {
             textarea.remove();
         }
 
-
         showShareDialog(url);
-
 
     } catch (error) {
 
@@ -1423,11 +1506,9 @@ async function copyShareURL(url) {
             error
         );
 
-
         showShareDialog(url);
     }
 }
-
 
 /* =========================================================
  * 共有URLダイアログ
@@ -1440,21 +1521,17 @@ function showShareDialog(url) {
             ".share-dialog"
         );
 
-
     if (oldDialog) {
         oldDialog.remove();
     }
-
 
     const dialog =
         document.createElement(
             "div"
         );
 
-
     dialog.className =
         "share-dialog";
-
 
     dialog.innerHTML = `
 
@@ -1503,23 +1580,19 @@ function showShareDialog(url) {
 
     `;
 
-
     document.body.appendChild(
         dialog
     );
-
 
     const copyButton =
         document.getElementById(
             "copy-share-url-button"
         );
 
-
     const closeButton =
         document.getElementById(
             "close-share-dialog-button"
         );
-
 
     copyButton.addEventListener(
         "click",
@@ -1558,7 +1631,6 @@ function showShareDialog(url) {
         }
     );
 
-
     closeButton.addEventListener(
         "click",
         function () {
@@ -1568,12 +1640,10 @@ function showShareDialog(url) {
         }
     );
 
-
     const overlay =
         dialog.querySelector(
             ".share-dialog-overlay"
         );
-
 
     overlay.addEventListener(
         "click",
@@ -1584,7 +1654,6 @@ function showShareDialog(url) {
         }
     );
 }
-
 
 /* =========================================================
  * ページ読み込み時
@@ -1603,7 +1672,6 @@ document.addEventListener(
                 "create-trip-button"
             );
 
-
         if (createButton) {
 
             createButton.addEventListener(
@@ -1612,7 +1680,6 @@ document.addEventListener(
             );
 
         }
-
 
         /* -----------------------------------------
          * 日程追加ボタン
@@ -1646,7 +1713,6 @@ document.addEventListener(
 
         }
 
-
         /* -----------------------------------------
          * 全データ削除
          * ----------------------------------------- */
@@ -1655,7 +1721,6 @@ document.addEventListener(
             document.getElementById(
                 "delete-all-data-button"
             );
-
 
         if (deleteAllButton) {
 
@@ -1666,7 +1731,6 @@ document.addEventListener(
 
         }
 
-
         /* -----------------------------------------
          * 旅行一覧表示
          * ----------------------------------------- */
@@ -1675,3 +1739,47 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================================
+ * 旅行作成フォームをリセット
+ * ========================================================= */
+
+function resetTripForm() {
+
+    editingTripId = null;
+
+    document.getElementById("trip-title").value = "";
+    document.getElementById("destination").value = "";
+    document.getElementById("start-date").value = "";
+    document.getElementById("end-date").value = "";
+    document.getElementById("trip-memo").value = "";
+
+    const scheduleList =
+        document.getElementById("schedule-list");
+
+    if (scheduleList) {
+        scheduleList.innerHTML = "";
+    }
+
+    const budgetList =
+        document.getElementById("budget-list");
+
+    if (budgetList) {
+        budgetList.innerHTML = "";
+    }
+
+    const createButton =
+        document.getElementById("create-trip-button");
+
+    if (createButton) {
+        createButton.textContent =
+            "＋ 旅のしおりを作成";
+    }
+
+    const cancelButton =
+        document.getElementById("cancel-edit-button");
+
+    if (cancelButton) {
+        cancelButton.remove();
+    }
+}
