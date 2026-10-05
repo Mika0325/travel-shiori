@@ -4,7 +4,6 @@
    PC・スマートフォン対応
    ========================================================= */
 
-
 /* =========================================================
    基本設定
    ========================================================= */
@@ -46,7 +45,6 @@ button {
     cursor: pointer;
 }
 
-
 /* =========================================================
    ヘッダー
    ========================================================= */
@@ -75,7 +73,6 @@ button {
     font-size: 14px;
 }
 
-
 /* =========================================================
    メイン
    ========================================================= */
@@ -85,7 +82,6 @@ button {
 
     margin: 30px auto 0;
 }
-
 
 /* =========================================================
    セクション
@@ -103,7 +99,6 @@ button {
 
     font-size: 21px;
 }
-
 
 /* =========================================================
    フォームカード
@@ -171,7 +166,6 @@ button {
     resize: vertical;
 }
 
-
 /* =========================================================
    ボタン
    ========================================================= */
@@ -202,7 +196,6 @@ button {
     transform: scale(0.98);
 }
 
-
 .secondary-button {
     width: 100%;
 
@@ -220,7 +213,6 @@ button {
 .secondary-button:hover {
     background: #fff0f2;
 }
-
 
 /* =========================================================
    セクションタイトル
@@ -253,7 +245,6 @@ button {
 .text-button:hover {
     text-decoration: underline;
 }
-
 
 /* =========================================================
    日程入力
@@ -298,7 +289,6 @@ button {
 .schedule-delete-button:hover {
     background: #f7f7f7;
 }
-
 
 /* =========================================================
    予算入力
@@ -423,6 +413,100 @@ button {
     }
 }
 
+@media (max-width: 600px) {
+
+    /* 日程入力全体 */
+    .schedule-form {
+        padding: 12px;
+    }
+
+    /* 時間・種類などの入力 */
+    .schedule-input-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+    }
+
+    /* 時間 */
+    .schedule-time {
+        flex: 0 0 90px;
+        width: 90px;
+        min-width: 0;
+        padding: 9px 6px;
+        font-size: 13px;
+    }
+
+    /* 種類 */
+    .schedule-type {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 6px;
+        font-size: 13px;
+    }
+
+    /* 場所 */
+    .schedule-location {
+        width: 100%;
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    /* メモ */
+    .schedule-memo {
+        width: 100%;
+        padding: 9px 10px;
+        font-size: 13px;
+    }
+
+    /* -----------------------------------------------------
+       削除・キャンセル・設定ボタン
+       ----------------------------------------------------- */
+
+    .schedule-button-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .schedule-button-row button {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 4px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* 削除ボタン */
+    .schedule-delete-button {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 4px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* キャンセルボタン */
+    .schedule-cancel-button {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 4px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* 設定ボタン */
+    .schedule-setting-button {
+        flex: 1;
+        min-width: 0;
+        padding: 9px 4px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+}
+
 /* =========================================================
    旅行一覧
    ========================================================= */
@@ -435,7 +519,6 @@ button {
 
     gap: 18px;
 }
-
 
 /* =========================================================
    旅行カード
@@ -507,7 +590,6 @@ button {
     font-size: 13px;
 }
 
-
 /* =========================================================
    お気に入り
    ========================================================= */
@@ -533,7 +615,6 @@ button {
 .favorite-button:hover {
     background: #ffe2e5;
 }
-
 
 /* =========================================================
    旅行カードボタン
@@ -596,7 +677,6 @@ button {
     color: #d86f79;
 }
 
-
 /* =========================================================
    データがない場合
    ========================================================= */
@@ -625,7 +705,6 @@ button {
 .empty-message p:first-child {
     font-size: 28px;
 }
-
 
 /* =========================================================
    設定
@@ -671,7 +750,6 @@ button {
 .setting-danger-button:hover {
     background: #fff0f2;
 }
-
 
 /* =========================================================
    共有URLダイアログ
@@ -755,7 +833,6 @@ button {
 .share-dialog-buttons button {
     flex: 1;
 }
-
 
 /* =========================================================
    共有ページ
@@ -955,7 +1032,6 @@ button {
     font-size: 12px;
 }
 
-
 /* =========================================================
    下部ナビゲーション
    ========================================================= */
@@ -1013,7 +1089,6 @@ button {
     font-weight: bold;
 }
 
-
 /* =========================================================
    スマートフォン版
    600px以下
@@ -1025,9 +1100,7 @@ button {
         padding-bottom: 75px;
     }
 
-
     /* ヘッダー */
-
     .header {
         padding: 20px 15px 23px;
 
@@ -1042,23 +1115,18 @@ button {
         font-size: 13px;
     }
 
-
     /* メイン */
-
     .main {
         width: calc(100% - 24px);
 
         margin-top: 20px;
     }
 
-
     .main h2 {
         font-size: 19px;
     }
 
-
     /* フォーム */
-
     .form-card {
         padding: 17px;
     }
@@ -1067,16 +1135,12 @@ button {
         margin-bottom: 17px;
     }
 
-
     /* 日程 */
-
     .schedule-form {
         padding: 14px;
     }
 
-
     /* 予算 */
-
     .budget-form {
         padding: 14px;
     }
@@ -1099,9 +1163,7 @@ button {
         width: 100%;
     }
 
-
     /* 最近の旅行 */
-
     .section-title {
         align-items: flex-end;
     }
@@ -1114,9 +1176,7 @@ button {
         font-size: 13px;
     }
 
-
     /* 旅行カード */
-
     .trip-list {
         display: flex;
 
@@ -1135,7 +1195,6 @@ button {
 
 
     /* カードボタン */
-
     .trip-card-buttons {
         flex-direction: column;
 
@@ -1147,9 +1206,7 @@ button {
         width: 100%;
     }
 
-
     /* 共有ダイアログ */
-
     .share-dialog-content {
         width: calc(100% - 24px);
 
@@ -1166,9 +1223,7 @@ button {
         width: 100%;
     }
 
-
     /* 共有ページ */
-
     .share-main {
         width: calc(100% - 24px);
 
@@ -1191,9 +1246,7 @@ button {
         width: 50px;
     }
 
-
     /* 下部ナビ */
-
     .nav-item {
         padding: 8px 3px 7px;
     }
@@ -1207,7 +1260,6 @@ button {
     }
 
 }
-
 
 /* =========================================================
    タブレット・小型PC
@@ -1227,7 +1279,6 @@ button {
 
 }
 
-
 /* =========================================================
    PC版
    901px以上
@@ -1239,11 +1290,9 @@ button {
         padding-bottom: 30px;
     }
 
-
     .main {
         width: 900px;
     }
-
 
     /*
      * 新しい旅を作るフォームは
@@ -1254,7 +1303,6 @@ button {
         padding: 30px 35px;
     }
 
-
     /*
      * 旅行一覧を2列にする
      */
@@ -1263,7 +1311,6 @@ button {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
-
 
     /*
      * 下部ナビをPCではページ下部に固定しない
