@@ -145,7 +145,7 @@ const SCHEDULE_TYPES = [
  * 日程入力欄を追加
  * ========================================================= */
 
-function addScheduleForm(schedule = null) {
+function addScheduleForm(schedule) {
 
     const scheduleList =
         document.getElementById("schedule-list");
@@ -171,10 +171,7 @@ function addScheduleForm(schedule = null) {
                 ${SCHEDULE_TYPES.map(function (type) {
 
         return `
-                        <option
-                            value="${type.value}"
-                            ${schedule && schedule.type === type.value ? "selected" : ""}
-                        >
+                        <option value="${type.value}">
                             ${type.label}
                         </option>
                     `;
@@ -192,7 +189,6 @@ function addScheduleForm(schedule = null) {
             <input
                 type="time"
                 class="schedule-time"
-                value="${schedule ? schedule.time || "" : ""}"
             >
 
         </div>
@@ -205,7 +201,6 @@ function addScheduleForm(schedule = null) {
                 type="text"
                 class="schedule-place"
                 placeholder="例：京都駅"
-                value="${schedule ? schedule.place || "" : ""}"
             >
 
         </div>
@@ -218,7 +213,6 @@ function addScheduleForm(schedule = null) {
                 type="text"
                 class="schedule-detail"
                 placeholder="例：〇〇線〇〇行き〇番ホーム"
-                value="${schedule ? schedule.detail || "" : ""}"
             >
 
         </div>
@@ -231,7 +225,6 @@ function addScheduleForm(schedule = null) {
                 type="text"
                 class="schedule-memo"
                 placeholder="例：10分前にホームへ"
-                value="${schedule ? schedule.memo || "" : ""}"
             >
 
         </div>
@@ -1697,7 +1690,6 @@ document.addEventListener(
                 "add-schedule-button"
             );
 
-
         if (addScheduleButton) {
 
             addScheduleButton.addEventListener(
@@ -1709,6 +1701,10 @@ document.addEventListener(
 
         }
 
+        /* -----------------------------------------
+         * 予算追加ボタン
+         * ----------------------------------------- */
+
         const addBudgetButton =
             document.getElementById(
                 "add-budget-button"
@@ -1718,10 +1714,18 @@ document.addEventListener(
 
             addBudgetButton.addEventListener(
                 "click",
-                addBudgetForm
+                function () {
+                    addBudgetForm();
+                }
             );
 
         }
+
+        /* -----------------------------------------
+         * 旅行一覧表示
+         * ----------------------------------------- */
+
+        displayTrips();
 
         /* -----------------------------------------
          * 全データ削除
