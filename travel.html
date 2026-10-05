@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>旅のしおり｜旅行</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <h1>旅行</h1>
+        <p>作成した旅のしおりを管理できます</p>
+    </header>
+
+
+    <main class="main">
+
+        <!-- 新しい旅行を作成 -->
+        <section class="create-section">
+
+            <a href="index.html" class="primary-button"
+                style="display: block; text-align: center; text-decoration: none;">
+                ＋ 新しい旅を作る
+            </a>
+
+        </section>
+
+
+        <!-- 旅行一覧 -->
+        <section class="trip-section">
+
+            <div class="section-title">
+                <h2>すべての旅行</h2>
+            </div>
+
+            <div class="trip-list" id="travel-trip-list">
+                <!-- JavaScriptで旅行を表示 -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 下部ナビゲーション -->
+    <nav class="bottom-nav">
+
+        <a href="index.html" class="nav-item">
+            <span>🏠</span>
+            <small>ホーム</small>
+        </a>
+
+        <a href="travel.html" class="nav-item active">
+            <span>📖</span>
+            <small>旅行</small>
+        </a>
+
+        <a href="favorite.html" class="nav-item">
+            <span>⭐</span>
+            <small>お気に入り</small>
+        </a>
+
+        <a href="setting.html" class="nav-item">
+            <span>⚙️</span>
+            <small>設定</small>
+        </a>
+
+    </nav>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+
+    <!-- PWA -->
+    <script>
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", function () {
+
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .then(function () {
+                        console.log(
+                            "Service Workerを登録しました。"
+                        );
+                    })
+                    .catch(function (error) {
+                        console.error(
+                            "Service Workerの登録に失敗しました。",
+                            error
+                        );
+                    });
+
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>

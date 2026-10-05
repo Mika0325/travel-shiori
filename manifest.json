@@ -1,0 +1,23 @@
+{
+    "name": "旅のしおり",
+    "short_name": "旅のしおり",
+    "description": "旅行の計画や予定をまとめられる旅のしおりアプリ",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#fff8f8",
+    "theme_color": "#f09199",
+    "orientation": "portrait",
+    "lang": "ja",
+    "icons": [
+        {
+            "src": "icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

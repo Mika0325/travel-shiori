@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>旅のしおり｜ホーム</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <h1>旅のしおり</h1>
+        <p>旅行の計画をかんたんにまとめよう</p>
+    </header>
+
+
+    <main class="main">
+
+        <!-- 新しい旅を作る -->
+        <section class="create-section">
+
+            <h2>新しい旅を作る</h2>
+
+            <div class="form-card">
+
+                <div class="form-group">
+                    <label for="trip-title">旅行タイトル</label>
+                    <input type="text" id="trip-title" placeholder="例：京都旅行">
+                </div>
+
+                <div class="form-group">
+                    <label for="destination">旅行先</label>
+                    <input type="text" id="destination" placeholder="例：京都・大阪">
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date">旅行開始日</label>
+                    <input type="date" id="start-date">
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date">旅行終了日</label>
+                    <input type="date" id="end-date">
+                </div>
+
+                <!-- 旅の日程 -->
+                <div class="form-group"> <label>旅の日程</label>
+                    <div id="schedule-list"> <!-- 日程をここに追加 --> </div> <button type="button" class="secondary-button"
+                        id="add-schedule-button"> ＋ 日程を追加 </button>
+                </div>
+
+                <div class="form-group">
+                    <label>旅行の予算</label>
+                    <div id="budget-list">
+                        <!-- 予算項目をここに追加 -->
+                    </div>
+                    <button type="button" class="secondary-button" id="add-budget-button">
+                        ＋ 予算を追加
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="trip-memo">旅行メモ</label>
+                    <textarea id="trip-memo" placeholder="旅行についてのメモを入力"></textarea>
+                </div>
+
+                <button class="primary-button" id="create-trip-button">
+                    ＋ 旅のしおりを作成
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- 最近の旅行 -->
+        <section class="trip-section">
+
+            <div class="section-title">
+                <h2>最近の旅行</h2>
+
+                <a href="travel.html" class="text-button">
+                    すべて見る
+                </a>
+            </div>
+
+            <div class="trip-list" id="home-trip-list">
+                <!-- JavaScriptで旅行を表示 -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- 下部ナビゲーション -->
+    <nav class="bottom-nav">
+
+        <a href="index.html" class="nav-item active">
+            <span>🏠</span>
+            <small>ホーム</small>
+        </a>
+
+        <a href="travel.html" class="nav-item">
+            <span>📖</span>
+            <small>旅行</small>
+        </a>
+
+        <a href="favorite.html" class="nav-item">
+            <span>⭐</span>
+            <small>お気に入り</small>
+        </a>
+
+        <a href="setting.html" class="nav-item">
+            <span>⚙️</span>
+            <small>設定</small>
+        </a>
+
+    </nav>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+    <script>
+        /*
+         * PWA
+         * Service Workerを登録
+         */
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", function () {
+
+                navigator.serviceWorker
+                    .register("service-worker.js")
+                    .then(function () {
+                        console.log(
+                            "Service Workerを登録しました。"
+                        );
+                    })
+                    .catch(function (error) {
+                        console.error(
+                            "Service Workerの登録に失敗しました。",
+                            error
+                        );
+                    });
+
+            });
+
+        }
+    </script>
+
+</body>
+
+</html>
