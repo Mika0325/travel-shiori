@@ -1,99 +1,91 @@
-// キャッシュの名前
-const CACHE_NAME = "travel-shiori-v1";
+const CACHE_NAME = "travel-shiori-v2";
 
-
-// キャッシュするファイル
 const CACHE_FILES = [
     "./",
     "./index.html",
+    "./travel.html",
+    "./favorite.html",
+    "./setting.html",
+    "./share.html",
     "./style.css",
     "./script.js",
-    "./manifest.json"
+    "./manifest.json",
+    "./icons/icon-192.png",
+    "./icons/icon-512.png"
 ];
 
 
-// =========================
-// インストール
-// =========================
+/* -----------------------------------------
+ * インストール
+ * ----------------------------------------- */
 
 self.addEventListener("install", function (event) {
 
-    console.log(
-        "Service Workerをインストールしています。"
-    );
+    console.log("Service Workerをインストールしています。");
 
     event.waitUntil(
 
-        caches.open(CACHE_NAME)
-            .then(function (cache) {
+        caches.open(CACHE_NAME).then(function (cache) {
 
-                return cache.addAll(CACHE_FILES);
+            return cache.addAll(CACHE_FILES);
 
-            })
+        })
 
     );
 
 });
 
 
-// =========================
-// 古いキャッシュを削除
-// =========================
+/* -----------------------------------------
+ * 古いキャッシュを削除
+ * ----------------------------------------- */
 
 self.addEventListener("activate", function (event) {
 
     event.waitUntil(
 
-        caches.keys()
-            .then(function (cacheNames) {
+        caches.keys().then(function (cacheNames) {
 
-                return Promise.all(
+            return Promise.all(
 
-                    cacheNames.map(function (cacheName) {
+                cacheNames.map(function (cacheName) {
 
-                        if (
-                            cacheName !== CACHE_NAME
-                        ) {
+                    if (cacheName !== CACHE_NAME) {
 
-                            return caches.delete(
-                                cacheName
-                            );
+                        return caches.delete(cacheName);
 
-                        }
+                    }
 
-                    })
+                })
 
-                );
+            );
 
-            })
+        })
 
     );
 
 });
 
 
-// =========================
-// ページ・ファイルを取得
-// =========================
+/* -----------------------------------------
+ * ページやファイルを取得
+ * ----------------------------------------- */
 
 self.addEventListener("fetch", function (event) {
 
     event.respondWith(
 
-        caches.match(event.request)
-            .then(function (response) {
+        caches.match(event.request).then(function (response) {
 
-                // キャッシュがあれば使用
-                if (response) {
+            if (response) {
 
-                    return response;
+                return response;
 
-                }
+            }
 
-                // なければネットワークから取得
-                return fetch(event.request);
+            return fetch(event.request);
 
-            })
+        })
 
     );
 
