@@ -1716,22 +1716,9 @@ function displayTripList(
 
                     </p>
 
-
                     ${trip.memo
-                        ? `
-
-                                <p class="trip-memo">
-
-                                    ${escapeHTML(
-                            trip.memo
-                        )}
-
-                                </p>
-
-                            `
-                        : ""
-                    }
-
+                        ? `<p class="trip-memo">${escapeHTML(trip.memo)}</p>`
+                        : ""}
 
                     <div class="trip-summary">
 

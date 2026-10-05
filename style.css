@@ -676,22 +676,22 @@ button {
 }
 
 
-.trip-memo {
-    margin: 10px 0 0;
+.trip-card .trip-memo {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
 
+    margin: 10px 0 0;
     padding: 10px;
 
     background: #fff8f8;
-
     border-radius: 8px;
 
     color: #666;
-
     font-size: 13px;
 
-    white-space: pre-wrap;
-
     text-align: left;
+    white-space: pre-wrap;
 }
 
 
