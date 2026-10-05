@@ -690,6 +690,8 @@ button {
     font-size: 13px;
 
     white-space: pre-wrap;
+
+    text-align: left;
 }
 
 
@@ -1061,6 +1063,8 @@ button {
     color: #888;
 
     font-size: 12px;
+
+    text-align: left;
 }
 
 
@@ -1152,6 +1156,8 @@ button {
     font-size: 14px;
 
     white-space: pre-wrap;
+
+    text-align: left;
 }
 
 
