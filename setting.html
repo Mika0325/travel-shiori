@@ -2,169 +2,262 @@
 <html lang="ja">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>旅のしおり｜設定</title>
+    <meta name="theme-color" content="#f09199">
+
+    <meta name="description" content="旅のしおりアプリの設定">
+
+    <title>設定｜旅のしおり</title>
+
+    <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+
 </head>
+
 
 <body>
 
-    <!-- ヘッダー -->
-    <header class="header">
+    <!-- =========================================
+         ヘッダー
+         ========================================= -->
+
+    <header class="app-header">
+
         <h1>設定</h1>
-        <p>旅のしおりの設定を変更できます</p>
+
+        <p>
+            アプリの設定やデータ管理
+        </p>
+
     </header>
 
 
-    <main class="main">
+    <!-- =========================================
+         メイン
+         ========================================= -->
 
-        <!-- アプリ設定 -->
-        <section class="setting-section">
+    <main class="main-content">
 
-            <h2>アプリ設定</h2>
+
+        <!-- =====================================
+             アプリについて
+             ===================================== -->
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>アプリについて</h2>
+
+            </div>
+
 
             <div class="setting-card">
 
-                <div class="setting-item">
-                    <div>
-                        <h3>アプリ名</h3>
-                        <p>旅のしおり</p>
-                    </div>
-                </div>
+                <h3>旅のしおり</h3>
 
-                <div class="setting-item">
-                    <div>
-                        <h3>バージョン</h3>
-                        <p>1.0.0</p>
-                    </div>
-                </div>
+                <p>
+                    旅行の計画や予定をまとめて、
+                    旅行中にも確認できるアプリです。
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- データ管理 -->
-        <section class="setting-section">
+        <!-- =====================================
+             データ管理
+             ===================================== -->
 
-            <h2>データ管理</h2>
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>データ管理</h2>
+
+            </div>
+
 
             <div class="setting-card">
 
-                <div class="setting-item setting-item-button">
+                <h3>旅行データ</h3>
 
-                    <div>
-                        <h3>旅行データを削除</h3>
-                        <p>
-                            保存されている旅行データをすべて削除します。
-                        </p>
-                    </div>
+                <p>
+                    このブラウザに保存されている
+                    旅行データを削除できます。
+                </p>
 
-                    <button id="delete-all-data-button" class="delete-button">
-                        削除
-                    </button>
 
-                </div>
+                <button type="button" class="danger-button" id="delete-all-data-button">
+                    すべてのデータを削除
+                </button>
 
             </div>
 
         </section>
 
 
-        <!-- PWA -->
-        <section class="setting-section">
+        <!-- =====================================
+             保存について
+             ===================================== -->
 
-            <h2>このアプリについて</h2>
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>データの保存について</h2>
+
+            </div>
+
 
             <div class="setting-card">
 
-                <div class="setting-item">
+                <p>
+                    旅行のデータは、
+                    現在使用しているブラウザの
+                    ローカルストレージに保存されます。
+                </p>
 
-                    <div>
-                        <h3>旅のしおり</h3>
-                        <p>
-                            旅行の計画や予定をまとめて管理できるアプリです。
-                        </p>
-                    </div>
-
-                </div>
+                <p>
+                    ブラウザのデータを削除した場合や、
+                    別の端末・ブラウザを使用した場合は、
+                    保存した旅行データが表示されない
+                    ことがあります。
+                </p>
 
             </div>
 
         </section>
 
 
-        <!-- 注意書き -->
-        <div class="setting-info">
-            <p>
-                ※旅行データはこの端末のブラウザに保存されています。
-            </p>
-            <p>
-                ※ブラウザのデータを削除すると、旅行データも削除される場合があります。
-            </p>
-        </div>
+        <!-- =====================================
+             共有について
+             ===================================== -->
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>共有について</h2>
+
+            </div>
+
+
+            <div class="setting-card">
+
+                <p>
+                    作成した旅のしおりは、
+                    共有URLを作成して他の人に
+                    見せることができます。
+                </p>
+
+                <p>
+                    共有されたしおりは、
+                    閲覧専用で表示されます。
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             PWAについて
+             ===================================== -->
+
+        <section class="content-section">
+
+            <div class="section-title">
+
+                <h2>アプリについて</h2>
+
+            </div>
+
+
+            <div class="setting-card">
+
+                <p>
+                    このアプリはPWAに対応しています。
+                </p>
+
+                <p>
+                    スマートフォンのホーム画面に
+                    追加すると、アプリのように
+                    使用できます。
+                </p>
+
+            </div>
+
+        </section>
+
 
     </main>
 
 
-    <!-- 下部ナビゲーション -->
-    <nav class="bottom-nav">
+    <!-- =========================================
+         下部ナビゲーション
+         ========================================= -->
+
+    <nav class="bottom-navigation">
 
         <a href="index.html" class="nav-item">
-            <span>🏠</span>
-            <small>ホーム</small>
+
+            <span class="nav-icon">🏠</span>
+
+            <span class="nav-label">
+                ホーム
+            </span>
+
         </a>
+
 
         <a href="travel.html" class="nav-item">
-            <span>📖</span>
-            <small>旅行</small>
+
+            <span class="nav-icon">🗺️</span>
+
+            <span class="nav-label">
+                旅行
+            </span>
+
         </a>
+
 
         <a href="favorite.html" class="nav-item">
-            <span>⭐</span>
-            <small>お気に入り</small>
+
+            <span class="nav-icon">☆</span>
+
+            <span class="nav-label">
+                お気に入り
+            </span>
+
         </a>
 
+
         <a href="setting.html" class="nav-item active">
-            <span>⚙️</span>
-            <small>設定</small>
+
+            <span class="nav-icon">⚙️</span>
+
+            <span class="nav-label">
+                設定
+            </span>
+
         </a>
 
     </nav>
 
 
-    <!-- JavaScript -->
+    <!-- =========================================
+         JavaScript
+         ========================================= -->
+
     <script src="script.js"></script>
 
-
-    <!-- PWA -->
-    <script>
-        if ("serviceWorker" in navigator) {
-
-            window.addEventListener("load", function () {
-
-                navigator.serviceWorker
-                    .register("service-worker.js")
-                    .then(function () {
-                        console.log(
-                            "Service Workerを登録しました。"
-                        );
-                    })
-                    .catch(function (error) {
-                        console.error(
-                            "Service Workerの登録に失敗しました。",
-                            error
-                        );
-                    });
-
-            });
-
-        }
-    </script>
 
 </body>
 

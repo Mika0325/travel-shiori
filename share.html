@@ -7,7 +7,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>共有された旅のしおり</title>
+    <meta name="theme-color" content="#f09199">
+
+    <meta name="description" content="共有された旅のしおりを確認できます">
+
+    <title>共有されたしおり｜旅のしおり</title>
+
+    <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="style.css">
 
@@ -16,86 +22,95 @@
 
 <body>
 
-    <header class="header">
+    <!-- =========================================
+         ヘッダー
+         ========================================= -->
+
+    <header class="app-header">
 
         <h1>旅のしおり</h1>
 
         <p>
-            共有された旅行プラン
+            共有された旅のしおり
         </p>
 
     </header>
 
 
-    <main class="main share-main">
+    <!-- =========================================
+         メイン
+         ========================================= -->
+
+    <main class="main-content">
 
 
-        <!-- 読み込み中 -->
+        <!-- =====================================
+             読み込み中
+             ===================================== -->
 
-        <div id="loading" class="share-message">
+        <section id="share-loading" class="content-section">
 
-            <p>
-                旅のしおりを読み込んでいます...
-            </p>
+            <div class="share-message">
 
-        </div>
-
-
-        <!-- エラー -->
-
-        <div id="error-message" class="share-message error-message" style="display: none;">
-
-            <h2>
-                しおりを表示できません
-            </h2>
-
-            <p id="error-text">
-                この共有URLは無効になっています。
-            </p>
-
-        </div>
-
-
-        <!-- 共有された旅行 -->
-
-        <section id="trip-content" style="display: none;">
-
-
-            <!-- 基本情報 -->
-
-            <div class="share-trip-card">
-
-                <div class="share-trip-icon">
-                    ✈️
-                </div>
-
-                <h2 id="share-trip-title">
-                    旅行タイトル
-                </h2>
-
-                <p id="share-trip-destination" class="share-destination">
-                    📍 旅行先
-                </p>
-
-                <p id="share-trip-date" class="share-date">
-                    📅 旅行期間
+                <p>
+                    旅のしおりを読み込んでいます…
                 </p>
 
             </div>
 
+        </section>
 
-            <!-- 旅行メモ -->
 
-            <section class="share-section">
+        <!-- =====================================
+             エラー
+             ===================================== -->
+
+        <section id="share-error" class="content-section" style="display: none;">
+
+            <div class="share-message error-message">
 
                 <h2>
-                    📝 旅行メモ
+                    しおりを表示できません
                 </h2>
 
-                <div class="share-card">
+                <p>
+                    共有URLが正しくないか、
+                    共有データが見つかりません。
+                </p>
 
-                    <p id="share-trip-memo">
-                        メモはありません。
+                <a href="index.html" class="primary-button">
+                    ホームへ戻る
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             共有された旅行
+             ===================================== -->
+
+        <div id="shared-trip-content" style="display: none;">
+
+
+            <!-- =================================
+                 旅行情報
+                 ================================= -->
+
+            <section class="content-section">
+
+                <div class="shared-trip-header">
+
+                    <p id="shared-destination" class="shared-destination">
+                    </p>
+
+
+                    <h2 id="shared-title" class="shared-trip-title">
+                    </h2>
+
+
+                    <p id="shared-date" class="shared-trip-date">
                     </p>
 
                 </div>
@@ -103,83 +118,129 @@
             </section>
 
 
-            <!-- 旅行予定 -->
+            <!-- =================================
+                 日程
+                 ================================= -->
 
-            <section class="share-section">
+            <section class="content-section">
 
-                <h2>
-                    📅 旅行の予定
-                </h2>
+                <div class="section-title">
 
-                <div id="share-plan-list" class="share-plan-list"></div>
+                    <h2>旅の日程</h2>
+
+                </div>
+
+
+                <div id="shared-schedule-list" class="shared-schedule-list">
+                    <!-- 日程をここに表示 -->
+                </div>
 
             </section>
 
 
-            <!-- 予算 -->
+            <!-- =================================
+                 予算
+                 ================================= -->
 
-            <section class="share-section">
+            <section class="content-section">
 
-                <h2>
-                    💰 旅行の予算
-                </h2>
+                <div class="section-title">
 
-                <div class="share-card">
+                    <h2>旅行の予算</h2>
 
-                    <div id="share-budget-list" class="share-budget-list"></div>
+                </div>
 
-                    <div class="share-total">
 
-                        <span>
-                            合計
-                        </span>
+                <div id="shared-budget-list" class="shared-budget-list">
+                    <!-- 予算をここに表示 -->
+                </div>
 
-                        <strong id="share-total-budget">
-                            0円
-                        </strong>
 
-                    </div>
+                <div id="shared-budget-total" class="shared-budget-total">
+                    <!-- 合計金額 -->
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 メモ
+                 ================================= -->
+
+            <section id="shared-memo-section" class="content-section" style="display: none;">
+
+                <div class="section-title">
+
+                    <h2>メモ</h2>
+
+                </div>
+
+
+                <div id="shared-memo" class="shared-memo">
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 共有について
+                 ================================= -->
+
+            <section class="content-section">
+
+                <div class="share-info-card">
+
+                    <h2>
+                        共有されたしおり
+                    </h2>
+
+                    <p>
+                        このページは共有された
+                        旅のしおりです。
+                    </p>
+
+                    <p>
+                        このページから内容を
+                        編集することはできません。
+                    </p>
 
                 </div>
 
             </section>
 
 
-            <!-- 共有情報 -->
+        </div>
 
-            <div class="share-info">
-
-                <p>
-                    🔗 このページは共有された旅のしおりです。
-                </p>
-
-                <p>
-                    このページから旅行情報を
-                    編集・削除することはできません。
-                </p>
-
-            </div>
-
-
-        </section>
 
     </main>
 
 
-    <footer class="share-footer">
+    <!-- =========================================
+         フッター
+         ========================================= -->
+
+    <footer class="app-footer">
 
         <p>
             旅のしおり
         </p>
 
+        <a href="index.html">
+            自分の旅のしおりを作る
+        </a>
+
     </footer>
 
 
+    <!-- =========================================
+         JavaScript
+         ========================================= -->
+
     <script>
 
-        /* ========================================
-           共有データを取得
-        ======================================== */
+        /* =========================================
+         * 共有データ取得
+         * ========================================= */
 
         function getSharedTrip() {
 
@@ -189,88 +250,82 @@
                 );
 
 
-            const data =
+            const encodedData =
                 params.get("data");
 
 
-            if (!data) {
-
-                throw new Error(
-                    "共有データがありません。"
-                );
+            if (!encodedData) {
+                return null;
             }
 
 
-            /*
-               URL-safe Base64を通常のBase64へ戻す
-            */
+            try {
 
-            let base64 =
-                data
-                    .replace(/-/g, "+")
-                    .replace(/_/g, "/");
+                const base64 =
+                    encodedData
+                        .replace(/-/g, "+")
+                        .replace(/_/g, "/");
 
 
-            while (
-                base64.length % 4 !== 0
-            ) {
-
-                base64 += "=";
-            }
+                const padding =
+                    "=".repeat(
+                        (4 - base64.length % 4) % 4
+                    );
 
 
-            /*
-               Base64 → バイナリ
-            */
-
-            const binary =
-                atob(base64);
+                const binary =
+                    atob(
+                        base64 + padding
+                    );
 
 
-            const bytes =
-                Uint8Array.from(
-                    binary,
-                    function (character) {
-                        return character.charCodeAt(0);
-                    }
+                const bytes =
+                    Uint8Array.from(
+                        binary,
+                        function (character) {
+
+                            return character.charCodeAt(0);
+
+                        }
+                    );
+
+
+                const json =
+                    new TextDecoder().decode(
+                        bytes
+                    );
+
+
+                return JSON.parse(json);
+
+            } catch (error) {
+
+                console.error(
+                    "共有データの読み込みに失敗しました。",
+                    error
                 );
 
-
-            /*
-               UTF-8 → JSON
-            */
-
-            const json =
-                new TextDecoder()
-                    .decode(bytes);
-
-
-            const trip =
-                JSON.parse(json);
-
-
-            return trip;
+                return null;
+            }
         }
 
 
-        /* ========================================
-           HTMLエスケープ
-        ======================================== */
+        /* =========================================
+         * HTMLエスケープ
+         * ========================================= */
 
-        function escapeHTML(text) {
+        function escapeHTML(value) {
 
             if (
-                text === null ||
-                text === undefined
+                value === null ||
+                value === undefined
             ) {
                 return "";
             }
 
-            return String(text)
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
+
+            return String(value)
+                .replace(/&/g, "&amp;")
                 .replace(
                     /</g,
                     "&lt;"
@@ -290,9 +345,9 @@
         }
 
 
-        /* ========================================
-           日付
-        ======================================== */
+        /* =========================================
+         * 日付表示
+         * ========================================= */
 
         function formatDate(dateString) {
 
@@ -300,12 +355,15 @@
                 return "";
             }
 
+
             const date =
-                new Date(dateString);
+                new Date(
+                    dateString + "T00:00:00"
+                );
 
 
             if (
-                isNaN(
+                Number.isNaN(
                     date.getTime()
                 )
             ) {
@@ -315,20 +373,66 @@
 
             return (
                 date.getFullYear() +
-                "/" +
-                String(
-                    date.getMonth() + 1
-                ).padStart(2, "0") +
-                "/" +
-                String(
-                    date.getDate()
-                ).padStart(2, "0")
+                "年" +
+                (date.getMonth() + 1) +
+                "月" +
+                date.getDate() +
+                "日"
             );
         }
 
-        /* ========================================
-           種類
-        ======================================== */
+
+        /* =========================================
+         * 日付範囲
+         * ========================================= */
+
+        function formatDateRange(
+            startDate,
+            endDate
+        ) {
+
+            if (
+                !startDate &&
+                !endDate
+            ) {
+                return "";
+            }
+
+
+            if (
+                !endDate ||
+                startDate === endDate
+            ) {
+
+                return formatDate(
+                    startDate
+                );
+            }
+
+
+            return (
+                formatDate(startDate) +
+                " ～ " +
+                formatDate(endDate)
+            );
+        }
+
+
+        /* =========================================
+         * 金額表示
+         * ========================================= */
+
+        function formatMoney(amount) {
+
+            return Number(
+                amount || 0
+            ).toLocaleString("ja-JP");
+        }
+
+
+        /* =========================================
+         * 日程の種類
+         * ========================================= */
 
         const scheduleTypes = {
 
@@ -346,29 +450,313 @@
 
         };
 
-        /* ========================================
-           旅行を表示
-        ======================================== */
+
+        /* =========================================
+         * 日程表示
+         * ========================================= */
+
+        function displaySchedules(
+            schedules
+        ) {
+
+            const list =
+                document.getElementById(
+                    "shared-schedule-list"
+                );
+
+
+            if (!list) {
+                return;
+            }
+
+
+            list.innerHTML = "";
+
+
+            if (
+                !Array.isArray(schedules) ||
+                schedules.length === 0
+            ) {
+
+                list.innerHTML = `
+                    <p class="empty-message">
+                        登録されている日程はありません。
+                    </p>
+                `;
+
+                return;
+            }
+
+
+            schedules.forEach(
+                function (schedule, index) {
+
+                    const scheduleCard =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    scheduleCard.className =
+                        "shared-schedule-card";
+
+
+                    const typeLabel =
+                        scheduleTypes[
+                        schedule.type
+                        ] ||
+                        "📌 その他";
+
+
+                    scheduleCard.innerHTML = `
+
+                        <div class="shared-schedule-number">
+
+                            ${index + 1}
+
+                        </div>
+
+
+                        <div class="shared-schedule-content">
+
+                            <div class="shared-schedule-top">
+
+                                <span class="shared-schedule-type">
+
+                                    ${escapeHTML(
+                        typeLabel
+                    )}
+
+                                </span>
+
+
+                                ${schedule.time
+                            ? `
+                                            <span class="shared-schedule-time">
+                                                ${escapeHTML(
+                                schedule.time
+                            )}
+                                            </span>
+                                        `
+                            : ""
+                        }
+
+                            </div>
+
+
+                            ${schedule.place
+                            ? `
+                                        <h3>
+                                            ${escapeHTML(
+                                schedule.place
+                            )}
+                                        </h3>
+                                    `
+                            : ""
+                        }
+
+
+                            ${schedule.detail
+                            ? `
+                                        <p>
+                                            ${escapeHTML(
+                                schedule.detail
+                            )}
+                                        </p>
+                                    `
+                            : ""
+                        }
+
+
+                            ${schedule.memo
+                            ? `
+                                        <p class="shared-schedule-memo">
+                                            メモ：
+                                            ${escapeHTML(
+                                schedule.memo
+                            )}
+                                        </p>
+                                    `
+                            : ""
+                        }
+
+                        </div>
+
+                    `;
+
+
+                    list.appendChild(
+                        scheduleCard
+                    );
+
+                }
+            );
+        }
+
+
+        /* =========================================
+         * 予算表示
+         * ========================================= */
+
+        function displayBudgets(
+            budgets
+        ) {
+
+            const list =
+                document.getElementById(
+                    "shared-budget-list"
+                );
+
+
+            const totalElement =
+                document.getElementById(
+                    "shared-budget-total"
+                );
+
+
+            if (!list) {
+                return;
+            }
+
+
+            list.innerHTML = "";
+
+
+            if (
+                !Array.isArray(budgets) ||
+                budgets.length === 0
+            ) {
+
+                list.innerHTML = `
+                    <p class="empty-message">
+                        登録されている予算はありません。
+                    </p>
+                `;
+
+
+                if (totalElement) {
+
+                    totalElement.textContent =
+                        "";
+                }
+
+                return;
+            }
+
+
+            let total = 0;
+
+
+            budgets.forEach(
+                function (budget) {
+
+                    const amount =
+                        Number(
+                            budget.amount
+                        ) || 0;
+
+
+                    total += amount;
+
+
+                    const budgetItem =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    budgetItem.className =
+                        "shared-budget-item";
+
+
+                    budgetItem.innerHTML = `
+
+                        <span>
+
+                            ${escapeHTML(
+                        budget.category ||
+                        budget.name ||
+                        "その他"
+                    )}
+
+                        </span>
+
+
+                        <strong>
+
+                            ${formatMoney(
+                        amount
+                    )}円
+
+                        </strong>
+
+                    `;
+
+
+                    list.appendChild(
+                        budgetItem
+                    );
+
+                }
+            );
+
+
+            if (totalElement) {
+
+                totalElement.innerHTML = `
+
+                    <span>
+                        合計
+                    </span>
+
+                    <strong>
+                        ${formatMoney(total)}円
+                    </strong>
+
+                `;
+            }
+        }
+
+
+        /* =========================================
+         * 共有旅行表示
+         * ========================================= */
 
         function displaySharedTrip(trip) {
 
             const loading =
                 document.getElementById(
-                    "loading"
+                    "share-loading"
                 );
+
 
             const error =
                 document.getElementById(
-                    "error-message"
+                    "share-error"
                 );
+
 
             const content =
                 document.getElementById(
-                    "trip-content"
+                    "shared-trip-content"
                 );
 
 
-            /* 読み込み中を消す */
+            if (!trip) {
+
+                if (loading) {
+                    loading.style.display =
+                        "none";
+                }
+
+                if (error) {
+                    error.style.display =
+                        "block";
+                }
+
+                return;
+            }
+
 
             if (loading) {
                 loading.style.display =
@@ -376,7 +764,11 @@
             }
 
 
-            /* 本文を表示 */
+            if (error) {
+                error.style.display =
+                    "none";
+            }
+
 
             if (content) {
                 content.style.display =
@@ -384,411 +776,129 @@
             }
 
 
-            /* 基本情報 */
+            /* -----------------------------------------
+             * 旅行タイトル
+             * ----------------------------------------- */
 
             const title =
                 document.getElementById(
-                    "share-trip-title"
-                );
-
-            const destination =
-                document.getElementById(
-                    "share-trip-destination"
-                );
-
-            const date =
-                document.getElementById(
-                    "share-trip-date"
-                );
-
-            const memo =
-                document.getElementById(
-                    "share-trip-memo"
+                    "shared-title"
                 );
 
 
             if (title) {
 
                 title.textContent =
-                    trip.title ||
-                    "無題の旅行";
+                    trip.title || "無題の旅";
             }
+
+
+            /* -----------------------------------------
+             * 旅行先
+             * ----------------------------------------- */
+
+            const destination =
+                document.getElementById(
+                    "shared-destination"
+                );
 
 
             if (destination) {
 
                 destination.textContent =
-                    "📍 " +
-                    (
-                        trip.destination ||
-                        "未設定"
-                    );
+                    trip.destination || "";
             }
+
+
+            /* -----------------------------------------
+             * 日程
+             * ----------------------------------------- */
+
+            const date =
+                document.getElementById(
+                    "shared-date"
+                );
 
 
             if (date) {
 
                 date.textContent =
-                    "📅 " +
-                    formatDate(
-                        trip.startDate
-                    ) +
-                    " ～ " +
-                    formatDate(
+                    formatDateRange(
+                        trip.startDate,
                         trip.endDate
                     );
             }
 
 
-            if (memo) {
+            /* -----------------------------------------
+             * 旅の日程
+             * ----------------------------------------- */
+
+            displaySchedules(
+                trip.schedules || []
+            );
+
+
+            /* -----------------------------------------
+             * 予算
+             * ----------------------------------------- */
+
+            displayBudgets(
+                trip.budgets || []
+            );
+
+
+            /* -----------------------------------------
+             * メモ
+             * ----------------------------------------- */
+
+            const memoSection =
+                document.getElementById(
+                    "shared-memo-section"
+                );
+
+
+            const memo =
+                document.getElementById(
+                    "shared-memo"
+                );
+
+
+            if (
+                trip.memo &&
+                memoSection &&
+                memo
+            ) {
+
+                memoSection.style.display =
+                    "block";
 
                 memo.textContent =
-                    trip.memo ||
-                    "メモはありません。";
-            }
+                    trip.memo;
 
+            } else if (memoSection) {
 
-            /* =================================
-               旅行予定
-            ================================= */
-
-            const planList =
-                document.getElementById(
-                    "share-plan-list"
-                );
-
-
-            if (planList) {
-
-                const schedules =
-                    Array.isArray(
-                        trip.schedules
-                    )
-                        ? trip.schedules
-                        : [];
-
-
-                if (
-                    schedules.length === 0
-                ) {
-
-                    planList.innerHTML = `
-
-                        <div class="share-card">
-
-                            <p>
-                                旅行の予定は登録されていません。
-                            </p>
-
-                        </div>
-
-                    `;
-
-                } else {
-
-                    planList.innerHTML =
-                        schedules
-                            .map(
-                                function (
-                                    schedule,
-                                    index
-                                ) {
-
-                                    const type =
-                                        scheduleTypes[
-                                        schedule.type
-                                        ] ||
-                                        "📌 その他";
-
-
-                                    return `
-
-                                        <div class="share-plan">
-
-                                            <div class="share-plan-time">
-
-                                                ${escapeHTML(
-                                        schedule.time ||
-                                        ""
-                                    )
-                                        }
-
-                                            </div>
-
-
-                                            <div class="share-plan-content">
-
-                                                <h3>
-                                                    ${escapeHTML(
-                                            type
-                                        )
-                                        }
-                                                </h3>
-
-
-                                                ${schedule.place
-                                            ? `
-                                                            <p>
-                                                                📍
-                                                                ${escapeHTML(
-                                                schedule.place
-                                            )
-                                            }
-                                                            </p>
-                                                        `
-                                            : ""
-                                        }
-
-
-                                                ${schedule.platform
-                                            ? `
-                                                            <p>
-                                                                🚉
-                                                                ${escapeHTML(
-                                                schedule.platform
-                                            )
-                                            }
-                                                            </p>
-                                                        `
-                                            : ""
-                                        }
-
-
-                                                ${schedule.destination
-                                            ? `
-                                                            <p>
-                                                                ➡️
-                                                                ${escapeHTML(
-                                                schedule.destination
-                                            )
-                                            }
-                                                            </p>
-                                                        `
-                                            : ""
-                                        }
-
-
-                                                ${schedule.memo
-                                            ? `
-                                                            <p>
-                                                                📝
-                                                                ${escapeHTML(
-                                                schedule.memo
-                                            )
-                                            }
-                                                            </p>
-                                                        `
-                                            : ""
-                                        }
-
-                                            </div>
-
-                                        </div>
-
-                                    `;
-
-                                }
-                            )
-                            .join("");
-                }
-            }
-
-
-            /* =================================
-               予算
-            ================================= */
-
-            const budgetList =
-                document.getElementById(
-                    "share-budget-list"
-                );
-
-            const totalBudget =
-                document.getElementById(
-                    "share-total-budget"
-                );
-
-
-            const budgets =
-                Array.isArray(
-                    trip.budgets
-                )
-                    ? trip.budgets
-                    : [];
-
-
-            if (budgetList) {
-
-                if (
-                    budgets.length === 0
-                ) {
-
-                    budgetList.innerHTML = `
-
-                        <p>
-                            予算は登録されていません。
-                        </p>
-
-                    `;
-
-                } else {
-
-                    let total = 0;
-
-
-                    budgetList.innerHTML =
-                        budgets
-                            .map(
-                                function (
-                                    budget
-                                ) {
-
-                                    const amount =
-                                        Number(
-                                            budget.amount
-                                        ) || 0;
-
-
-                                    total +=
-                                        amount;
-
-
-                                    return `
-
-                                        <div class="share-budget">
-
-                                            <span>
-                                                ${escapeHTML(
-                                        budget.name ||
-                                        budget.category ||
-                                        "予算"
-                                    )
-                                        }
-                                            </span>
-
-                                            <strong>
-                                                ${amount.toLocaleString()
-                                        }円
-                                            </strong>
-
-                                        </div>
-
-                                    `;
-
-                                }
-                            )
-                            .join("");
-
-
-                    if (totalBudget) {
-
-                        totalBudget.textContent =
-                            total.toLocaleString() +
-                            "円";
-                    }
-                }
-            }
-
-
-            /* エラーを非表示 */
-
-            if (error) {
-                error.style.display =
+                memoSection.style.display =
                     "none";
             }
         }
 
 
-        /* ========================================
-           エラー表示
-        ======================================== */
-
-        function showError(message) {
-
-            const loading =
-                document.getElementById(
-                    "loading"
-                );
-
-            const error =
-                document.getElementById(
-                    "error-message"
-                );
-
-            const errorText =
-                document.getElementById(
-                    "error-text"
-                );
-
-            const content =
-                document.getElementById(
-                    "trip-content"
-                );
-
-
-            if (loading) {
-                loading.style.display =
-                    "none";
-            }
-
-
-            if (content) {
-                content.style.display =
-                    "none";
-            }
-
-
-            if (error) {
-                error.style.display =
-                    "block";
-            }
-
-
-            if (errorText) {
-                errorText.textContent =
-                    message;
-            }
-        }
-
-
-        /* ========================================
-           ページ開始
-        ======================================== */
+        /* =========================================
+         * ページ読み込み
+         * ========================================= */
 
         document.addEventListener(
             "DOMContentLoaded",
             function () {
 
-                try {
-
-                    const trip =
-                        getSharedTrip();
+                const trip =
+                    getSharedTrip();
 
 
-                    if (!trip) {
-
-                        throw new Error(
-                            "旅行データがありません。"
-                        );
-                    }
-
-
-                    displaySharedTrip(
-                        trip
-                    );
-
-                } catch (error) {
-
-                    console.error(
-                        "共有された旅行の読み込みに失敗しました。",
-                        error
-                    );
-
-
-                    showError(
-                        "この共有URLは無効になっているか、旅行データが正しくありません。"
-                    );
-                }
+                displaySharedTrip(
+                    trip
+                );
 
             }
         );

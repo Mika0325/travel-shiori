@@ -1,8 +1,5 @@
-/* =========================================================
-   旅のしおり
-   共通CSS
-   PC・スマートフォン対応
-   ========================================================= */
+@charset "UTF-8";
+
 
 /* =========================================================
    基本設定
@@ -12,13 +9,20 @@
     box-sizing: border-box;
 }
 
+
 html {
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+
+    background: #fff8f8;
 }
+
 
 body {
     margin: 0;
-    padding: 0 0 90px;
+    padding: 0;
+
+    padding-bottom: 90px;
 
     background: #fff8f8;
     color: #444;
@@ -26,102 +30,136 @@ body {
     font-family:
         -apple-system,
         BlinkMacSystemFont,
-        "Hiragino Kaku Gothic ProN",
+        "Helvetica Neue",
         "Yu Gothic",
+        "YuGothic",
         "Meiryo",
         sans-serif;
 
     line-height: 1.6;
 }
 
-button,
-input,
-textarea,
-select {
-    font: inherit;
+
+/* =========================================================
+   共通リンク
+   ========================================================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-button {
-    cursor: pointer;
-}
 
 /* =========================================================
    ヘッダー
    ========================================================= */
 
-.header {
+.app-header {
+    padding: 28px 20px 24px;
+
     background: #f09199;
-    color: white;
+
+    color: #fff;
 
     text-align: center;
-
-    padding: 25px 20px 28px;
-
-    border-radius: 0 0 24px 24px;
 }
 
-.header h1 {
+
+.app-header h1 {
     margin: 0;
 
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 26px;
+    font-weight: 700;
 }
 
-.header p {
-    margin: 5px 0 0;
 
-    font-size: 14px;
+.app-header p {
+    margin: 6px 0 0;
+
+    font-size: 13px;
+
+    opacity: 0.95;
 }
+
 
 /* =========================================================
    メイン
    ========================================================= */
 
-.main {
-    width: min(900px, calc(100% - 40px));
+.main-content {
+    width: 100%;
+    max-width: 760px;
 
-    margin: 30px auto 0;
+    margin: 0 auto;
+
+    padding: 20px 16px 30px;
 }
+
 
 /* =========================================================
    セクション
    ========================================================= */
 
-.create-section,
-.trip-section,
-.setting-section,
-.share-section {
-    margin-bottom: 35px;
-}
+.content-section {
+    margin-bottom: 20px;
 
-.main h2 {
-    margin: 0 0 16px;
+    padding: 20px;
 
-    font-size: 21px;
-}
+    background: #fff;
 
-/* =========================================================
-   フォームカード
-   ========================================================= */
-
-.form-card {
-    background: white;
-
-    padding: 28px;
-
-    border-radius: 20px;
+    border: 1px solid #f3e0e2;
+    border-radius: 16px;
 
     box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.06);
+        0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-.form-group {
-    margin-bottom: 20px;
+
+.section-title,
+.section-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 18px;
 }
+
+
+.section-title h2,
+.section-header h2 {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 19px;
+    font-weight: 700;
+}
+
+
+.section-link {
+    color: #d86f78;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   フォーム
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
 
 .form-group:last-child {
     margin-bottom: 0;
 }
+
 
 .form-group label {
     display: block;
@@ -131,120 +169,193 @@ button {
     color: #555;
 
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select {
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
     width: 100%;
 
-    padding: 12px 13px;
+    padding: 11px 12px;
 
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 9px;
 
-    background: white;
-
+    background: #fff;
     color: #444;
 
+    font-family: inherit;
+    font-size: 14px;
+
     outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
 }
 
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="time"],
+.form-group select {
+    min-height: 44px;
+}
+
+
+.form-group textarea {
+    resize: vertical;
+
+    min-height: 110px;
+}
+
+
 .form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: #f09199;
 
     box-shadow:
-        0 0 0 3px rgba(240, 145, 153, 0.12);
+        0 0 0 2px rgba(240, 145, 153, 0.15);
 }
 
-.form-group textarea {
-    min-height: 120px;
 
-    resize: vertical;
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #aaa;
 }
+
 
 /* =========================================================
-   ボタン
+   日付入力
    ========================================================= */
+
+.date-input-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.date-input-row input {
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.date-input-row span {
+    flex-shrink: 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ボタン共通
+   ========================================================= */
+
+button {
+    font-family: inherit;
+}
+
+
+.primary-button,
+.secondary-button,
+.danger-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+
+    padding: 11px 16px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.1s;
+}
+
 
 .primary-button {
     width: 100%;
 
-    padding: 13px 18px;
-
     border: none;
-    border-radius: 12px;
 
     background: #f09199;
-    color: white;
-
-    font-weight: bold;
-
-    transition:
-        opacity 0.2s,
-        transform 0.1s;
+    color: #fff;
 }
+
 
 .primary-button:hover {
-    opacity: 0.85;
+    background: #e67f88;
 }
 
-.primary-button:active {
+
+.primary-button:active,
+.secondary-button:active,
+.danger-button:active {
     transform: scale(0.98);
 }
+
 
 .secondary-button {
     width: 100%;
 
-    padding: 11px 18px;
-
     border: 1px solid #f09199;
-    border-radius: 12px;
 
-    background: white;
-    color: #e27f89;
-
-    font-weight: bold;
+    background: #fff;
+    color: #d86f78;
 }
+
 
 .secondary-button:hover {
-    background: #fff0f2;
+    background: #fff4f5;
 }
+
+
+.danger-button {
+    width: 100%;
+
+    border: 1px solid #e0a0a5;
+
+    background: #fff;
+    color: #c85f68;
+}
+
+
+.danger-button:hover {
+    background: #fff4f5;
+}
+
 
 /* =========================================================
-   セクションタイトル
+   新しい旅を作るリンク
    ========================================================= */
 
-.section-title {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-}
-
-.section-title h2 {
-    margin: 0;
-}
-
-.text-button {
-    color: #e27f89;
-
-    font-size: 14px;
-    font-weight: bold;
-
+.new-trip-link {
     text-decoration: none;
-
-    white-space: nowrap;
 }
 
-.text-button:hover {
-    text-decoration: underline;
-}
 
 /* =========================================================
    日程入力
@@ -255,71 +366,50 @@ button {
 
     flex-direction: column;
 
-    gap: 15px;
+    gap: 14px;
 
     margin-bottom: 12px;
 }
 
+
 .schedule-form {
-    padding: 18px;
+    padding: 16px;
 
     background: #fff8f8;
 
     border: 1px solid #f4d5d8;
-
     border-radius: 14px;
 }
+
 
 .schedule-form .form-group {
     margin-bottom: 14px;
 }
 
-.schedule-delete-button {
+
+.schedule-form .form-group:last-of-type {
+    margin-bottom: 0;
+}
+
+
+.schedule-form label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #555;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.schedule-form input,
+.schedule-form select {
     width: 100%;
 
-    padding: 9px 12px;
-
-    border: 1px solid #ddd;
-    border-radius: 9px;
-
-    background: white;
-    color: #777;
-}
-
-.schedule-delete-button:hover {
-    background: #f7f7f7;
-}
-
-/* =========================================================
-   予算入力
-   ========================================================= */
-
-#budget-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 12px;
-}
-
-.budget-form {
-    padding: 16px;
-    background: #fff8f8;
-    border: 1px solid #f4d5d8;
-    border-radius: 14px;
-}
-
-.budget-input-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-}
-
-/* カテゴリ */
-.budget-category {
-    flex: 1;
-    min-width: 0;
     height: 44px;
+
     padding: 10px 12px;
 
     border: 1px solid #ddd;
@@ -327,14 +417,115 @@ button {
 
     background: #fff;
     color: #444;
+
+    font-family: inherit;
     font-size: 14px;
+
+    outline: none;
 }
 
-/* 金額 */
+
+.schedule-form input:focus,
+.schedule-form select:focus {
+    border-color: #f09199;
+
+    box-shadow:
+        0 0 0 2px rgba(240, 145, 153, 0.15);
+}
+
+
+.schedule-delete-button {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+
+    background: #fff;
+    color: #777;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.schedule-delete-button:hover {
+    background: #f7f7f7;
+
+    border-color: #ccc;
+}
+
+
+/* =========================================================
+   予算入力
+   ========================================================= */
+
+#budget-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 12px;
+}
+
+
+.budget-form {
+    padding: 16px;
+
+    background: #fff8f8;
+
+    border: 1px solid #f4d5d8;
+    border-radius: 14px;
+}
+
+
+.budget-input-row {
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    gap: 10px;
+}
+
+
+.budget-category {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 44px;
+
+    padding: 10px 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 9px;
+
+    background: #fff;
+    color: #444;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+}
+
+
 .budget-amount {
     flex: 1;
+
     min-width: 0;
+
     height: 44px;
+
     padding: 10px 12px;
 
     border: 1px solid #ddd;
@@ -344,25 +535,37 @@ button {
     color: #444;
 
     text-align: right;
+
+    font-family: inherit;
     font-size: 14px;
+
+    outline: none;
 }
+
 
 .budget-input-row span {
     flex-shrink: 0;
+
     color: #666;
+
     font-size: 14px;
 }
 
+
 .budget-category:focus,
 .budget-amount:focus {
-    outline: none;
     border-color: #f09199;
-    box-shadow: 0 0 0 2px rgba(240, 145, 153, 0.15);
+
+    box-shadow:
+        0 0 0 2px rgba(240, 145, 153, 0.15);
 }
+
 
 .budget-delete-button {
     width: 100%;
+
     margin-top: 10px;
+
     padding: 9px;
 
     border: 1px solid #ddd;
@@ -371,169 +574,45 @@ button {
     background: #fff;
     color: #777;
 
+    font-family: inherit;
     font-size: 13px;
+
     cursor: pointer;
 }
 
+
 .budget-delete-button:hover {
     background: #f7f7f7;
+
     border-color: #ccc;
 }
 
-/* =========================================================
-   スマホ版
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .budget-form {
-        padding: 12px;
-    }
-
-    .budget-input-row {
-        gap: 8px;
-    }
-
-    .budget-category,
-    .budget-amount {
-        flex: 1;
-        width: 0;
-        height: 42px;
-        padding: 9px 10px;
-        font-size: 13px;
-    }
-
-    .budget-input-row span {
-        font-size: 13px;
-    }
-
-    .budget-delete-button {
-        padding: 8px;
-        font-size: 12px;
-    }
-}
-
-@media (max-width: 600px) {
-
-    /* 日程入力全体 */
-    .schedule-form {
-        padding: 12px;
-    }
-
-    /* 時間・種類などの入力 */
-    .schedule-input-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        width: 100%;
-    }
-
-    /* 時間 */
-    .schedule-time {
-        flex: 0 0 90px;
-        width: 90px;
-        min-width: 0;
-        padding: 9px 6px;
-        font-size: 13px;
-    }
-
-    /* 種類 */
-    .schedule-type {
-        flex: 1;
-        min-width: 0;
-        padding: 9px 6px;
-        font-size: 13px;
-    }
-
-    /* 場所 */
-    .schedule-location {
-        width: 100%;
-        padding: 9px 10px;
-        font-size: 13px;
-    }
-
-    /* メモ */
-    .schedule-memo {
-        width: 100%;
-        padding: 9px 10px;
-        font-size: 13px;
-    }
-
-    /* -----------------------------------------------------
-       削除・キャンセル・設定ボタン
-       ----------------------------------------------------- */
-
-    .schedule-button-row {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .schedule-button-row button {
-        flex: 1;
-        min-width: 0;
-        padding: 9px 4px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    /* 削除ボタン */
-    .schedule-delete-button {
-        flex: 1;
-        min-width: 0;
-        padding: 9px 4px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    /* キャンセルボタン */
-    .schedule-cancel-button {
-        flex: 1;
-        min-width: 0;
-        padding: 9px 4px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-
-    /* 設定ボタン */
-    .schedule-setting-button {
-        flex: 1;
-        min-width: 0;
-        padding: 9px 4px;
-        font-size: 12px;
-        white-space: nowrap;
-    }
-}
 
 /* =========================================================
    旅行一覧
    ========================================================= */
 
 .trip-list {
-    display: grid;
+    display: flex;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+    flex-direction: column;
 
-    gap: 18px;
+    gap: 14px;
 }
 
-/* =========================================================
-   旅行カード
-   ========================================================= */
 
 .trip-card {
-    background: white;
+    padding: 16px;
 
-    padding: 20px;
+    background: #fff;
 
-    border-radius: 18px;
+    border: 1px solid #f1dfe1;
+    border-radius: 14px;
 
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.06);
+        0 2px 6px rgba(0, 0, 0, 0.03);
 }
+
 
 .trip-card-header {
     display: flex;
@@ -541,58 +620,27 @@ button {
     align-items: flex-start;
     justify-content: space-between;
 
-    gap: 12px;
+    gap: 10px;
 }
 
-.trip-card h3 {
+
+.trip-card-header h3 {
     margin: 0;
 
-    font-size: 19px;
-
     color: #444;
+
+    font-size: 18px;
 }
 
-.trip-destination {
-    margin: 3px 0 0;
+
+.trip-card-header p {
+    margin: 4px 0 0;
 
     color: #777;
 
-    font-size: 14px;
-}
-
-.trip-date {
-    margin: 10px 0 0;
-
-    color: #666;
-
-    font-size: 14px;
-}
-
-.trip-schedule-count {
-    margin: 6px 0 0;
-
-    color: #e27f89;
-
     font-size: 13px;
 }
 
-.trip-memo {
-    margin: 10px 0 0;
-
-    padding: 10px;
-
-    background: #fff8f8;
-
-    border-radius: 9px;
-
-    color: #666;
-
-    font-size: 13px;
-}
-
-/* =========================================================
-   お気に入り
-   ========================================================= */
 
 .favorite-button {
     flex-shrink: 0;
@@ -605,350 +653,423 @@ button {
     border: none;
     border-radius: 50%;
 
-    background: #fff0f2;
+    background: #fff4f5;
 
-    color: #f09199;
+    color: #e58a91;
 
     font-size: 22px;
+
+    cursor: pointer;
 }
+
 
 .favorite-button:hover {
-    background: #ffe2e5;
+    background: #ffecef;
 }
 
+
+.trip-date {
+    margin: 12px 0 0;
+
+    color: #666;
+
+    font-size: 13px;
+}
+
+
+.trip-memo {
+    margin: 10px 0 0;
+
+    padding: 10px;
+
+    background: #fff8f8;
+
+    border-radius: 8px;
+
+    color: #666;
+
+    font-size: 13px;
+
+    white-space: pre-wrap;
+}
+
+
+.trip-summary {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+
+.trip-summary span {
+    padding: 5px 9px;
+
+    background: #fff4f5;
+
+    border-radius: 20px;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
 /* =========================================================
-   旅行カードボタン
+   旅行カードのボタン
    ========================================================= */
 
 .trip-card-buttons {
     display: flex;
 
+    flex-wrap: wrap;
+
     gap: 8px;
 
-    margin-top: 15px;
+    margin-top: 16px;
 }
 
-.detail-button,
-.share-button {
+
+.trip-card-buttons button {
     flex: 1;
 
-    min-height: 42px;
+    min-width: 90px;
 
     padding: 10px 12px;
 
+    border-radius: 9px;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+.view-trip-button {
     border: none;
-    border-radius: 10px;
 
-    color: white;
-
-    font-weight: bold;
-}
-
-.detail-button {
     background: #f09199;
+    color: #fff;
 }
 
-.share-button {
-    background: #e48b94;
+
+.view-trip-button:hover {
+    background: #e67f88;
 }
 
-.detail-button:hover,
-.share-button:hover {
-    opacity: 0.85;
+
+.edit-trip-button {
+    border: 1px solid #f09199;
+
+    background: #fff;
+    color: #d86f78;
 }
 
-.delete-button {
+
+.edit-trip-button:hover {
+    background: #fff4f5;
+}
+
+
+.share-trip-button {
+    border: 1px solid #ddd;
+
+    background: #fff;
+    color: #666;
+}
+
+
+.share-trip-button:hover {
+    background: #f7f7f7;
+}
+
+
+.delete-trip-button {
+    border: 1px solid #ddd;
+
+    background: #fff;
+    color: #777;
+}
+
+
+.delete-trip-button:hover {
+    background: #f7f7f7;
+}
+
+
+/* =========================================================
+   空の一覧
+   ========================================================= */
+
+.empty-message {
+    margin: 0;
+
+    padding: 24px 12px;
+
+    color: #999;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   編集モード
+   ========================================================= */
+
+#cancel-edit-button {
     width: 100%;
 
     margin-top: 10px;
 
-    padding: 8px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #aaa;
-
-    font-size: 13px;
-}
-
-.delete-button:hover {
-    color: #d86f79;
-}
-
-/* =========================================================
-   データがない場合
-   ========================================================= */
-
-.empty-message {
-    grid-column: 1 / -1;
-
-    padding: 40px 20px;
-
-    background: white;
-
-    border-radius: 18px;
-
-    text-align: center;
-
-    color: #777;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.05);
-}
-
-.empty-message p {
-    margin: 5px 0;
-}
-
-.empty-message p:first-child {
-    font-size: 28px;
-}
-
-/* =========================================================
-   設定
-   ========================================================= */
-
-.setting-section {
-    background: white;
-
-    padding: 25px;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.06);
-}
-
-.setting-section h2 {
-    margin: 0 0 15px;
-
-    font-size: 19px;
-}
-
-.setting-section p {
-    color: #666;
-
-    font-size: 14px;
-}
-
-.setting-danger-button {
-    width: 100%;
-
-    padding: 12px;
-
-    border: 1px solid #e27f89;
-    border-radius: 10px;
-
-    background: white;
-    color: #d86f79;
-
-    font-weight: bold;
-}
-
-.setting-danger-button:hover {
-    background: #fff0f2;
-}
-
-/* =========================================================
-   共有URLダイアログ
-   ========================================================= */
-
-.share-dialog {
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-}
-
-.share-dialog-overlay {
-    position: absolute;
-
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.45);
-}
-
-.share-dialog-content {
-    position: relative;
-
-    width: min(500px, calc(100% - 40px));
-
-    margin: 100px auto 0;
-
-    padding: 25px;
-
-    background: white;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.share-dialog-content h2 {
-    margin: 0 0 10px;
-
-    font-size: 20px;
-}
-
-.share-dialog-content p {
-    margin: 0;
-
-    color: #666;
-
-    font-size: 14px;
-}
-
-#share-url-text {
-    width: 100%;
-
-    min-height: 100px;
-
-    margin-top: 15px;
-
-    padding: 12px;
+    padding: 12px 16px;
 
     border: 1px solid #ddd;
     border-radius: 10px;
 
+    background: #fff;
+    color: #666;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+#cancel-edit-button:hover {
+    background: #f8f8f8;
+
+    border-color: #ccc;
+}
+
+
+/* =========================================================
+   設定ページ
+   ========================================================= */
+
+.setting-card {
+    padding: 16px;
+
     background: #fff8f8;
 
-    resize: none;
-
-    font-size: 12px;
-    line-height: 1.5;
+    border: 1px solid #f4d5d8;
+    border-radius: 12px;
 }
 
-.share-dialog-buttons {
-    display: flex;
 
-    gap: 10px;
+.setting-card h3 {
+    margin: 0 0 8px;
 
-    margin-top: 15px;
+    color: #555;
+
+    font-size: 16px;
 }
 
-.share-dialog-buttons button {
-    flex: 1;
+
+.setting-card p {
+    margin: 0 0 10px;
+
+    color: #666;
+
+    font-size: 13px;
 }
+
+
+.setting-card p:last-child {
+    margin-bottom: 0;
+}
+
 
 /* =========================================================
    共有ページ
    ========================================================= */
 
-.share-main {
-    width: min(800px, calc(100% - 40px));
+.share-message {
+    padding: 20px;
 
-    margin: 30px auto 0;
+    text-align: center;
 }
 
-.share-trip-card {
-    background: white;
 
-    padding: 28px;
+.share-message h2 {
+    margin: 0 0 10px;
 
-    border-radius: 20px;
+    color: #555;
 
-    box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.06);
+    font-size: 19px;
 }
 
-.share-trip-icon {
-    font-size: 32px;
-}
 
-.share-trip-card h2 {
-    margin: 5px 0 0;
-
-    font-size: 25px;
-}
-
-.share-destination {
-    margin: 4px 0 0;
+.share-message p {
+    margin: 0 0 18px;
 
     color: #777;
-}
-
-.share-date {
-    margin: 10px 0 0;
-
-    color: #666;
 
     font-size: 14px;
 }
 
-.share-section {
-    margin-top: 22px;
+
+.error-message {
+    color: #777;
 }
 
-.share-section h3 {
-    margin: 0 0 10px;
 
-    font-size: 18px;
+.shared-trip-header {
+    text-align: center;
 }
 
-.share-card {
-    padding: 18px;
 
-    background: white;
+.shared-destination {
+    margin: 0 0 4px;
 
-    border-radius: 15px;
+    color: #d86f78;
 
-    box-shadow:
-        0 3px 12px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    font-weight: 600;
 }
 
-.share-plan-list {
+
+.shared-trip-title {
+    margin: 0;
+
+    color: #444;
+
+    font-size: 25px;
+}
+
+
+.shared-trip-date {
+    margin: 8px 0 0;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   共有日程
+   ========================================================= */
+
+.shared-schedule-list {
     display: flex;
 
     flex-direction: column;
 
-    gap: 10px;
+    gap: 12px;
 }
 
-.share-plan {
+
+.shared-schedule-card {
     display: flex;
 
-    gap: 15px;
+    gap: 12px;
 
-    padding: 13px;
+    padding: 15px;
 
     background: #fff8f8;
 
+    border: 1px solid #f4d5d8;
     border-radius: 12px;
 }
 
-.share-plan-time {
+
+.shared-schedule-number {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     flex-shrink: 0;
 
-    width: 60px;
+    width: 32px;
+    height: 32px;
 
-    color: #e27f89;
+    border-radius: 50%;
 
-    font-weight: bold;
+    background: #f09199;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 700;
 }
 
-.share-plan-content {
+
+.shared-schedule-content {
     flex: 1;
+
+    min-width: 0;
 }
 
-.share-plan-content strong {
-    display: block;
 
-    margin-bottom: 3px;
+.shared-schedule-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    margin-bottom: 5px;
 }
 
-.share-plan-content p {
-    margin: 2px 0;
+
+.shared-schedule-type {
+    color: #d86f78;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.shared-schedule-time {
+    color: #666;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+.shared-schedule-content h3 {
+    margin: 0 0 4px;
+
+    color: #444;
+
+    font-size: 16px;
+}
+
+
+.shared-schedule-content p {
+    margin: 3px 0;
 
     color: #666;
 
     font-size: 13px;
+
+    white-space: pre-wrap;
 }
 
-.share-budget-list {
+
+.shared-schedule-content .shared-schedule-memo {
+    margin-top: 8px;
+
+    color: #888;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   共有予算
+   ========================================================= */
+
+.shared-budget-list {
     display: flex;
 
     flex-direction: column;
@@ -956,92 +1077,154 @@ button {
     gap: 8px;
 }
 
-.share-budget {
+
+.shared-budget-item {
     display: flex;
 
+    align-items: center;
     justify-content: space-between;
 
     gap: 10px;
 
-    padding: 10px 12px;
+    padding: 11px 12px;
 
-    background: #fff8f8;
+    border-bottom: 1px solid #f2e5e6;
 
-    border-radius: 9px;
+    color: #555;
+
+    font-size: 14px;
 }
 
-.share-total {
+
+.shared-budget-item:last-child {
+    border-bottom: none;
+}
+
+
+.shared-budget-item strong {
+    color: #555;
+
+    white-space: nowrap;
+}
+
+
+.shared-budget-total {
     display: flex;
 
+    align-items: center;
     justify-content: space-between;
 
     margin-top: 12px;
 
-    padding-top: 12px;
+    padding: 14px;
 
-    border-top: 1px solid #eee;
+    border-radius: 10px;
+
+    background: #fff0f2;
+
+    color: #555;
+
+    font-size: 15px;
+    font-weight: 700;
 }
 
-.share-total strong {
-    color: #e27f89;
+
+.shared-budget-total strong {
+    color: #d86f78;
 
     font-size: 18px;
 }
 
-.share-info {
-    padding: 13px;
+
+/* =========================================================
+   共有メモ
+   ========================================================= */
+
+.shared-memo {
+    padding: 14px;
 
     background: #fff8f8;
 
+    border: 1px solid #f4d5d8;
     border-radius: 10px;
+
+    color: #666;
+
+    font-size: 14px;
+
+    white-space: pre-wrap;
+}
+
+
+/* =========================================================
+   共有情報
+   ========================================================= */
+
+.share-info-card {
+    padding: 18px;
+
+    background: #fff8f8;
+
+    border: 1px solid #f4d5d8;
+    border-radius: 12px;
+
+    text-align: center;
+}
+
+
+.share-info-card h2 {
+    margin: 0 0 8px;
+
+    color: #555;
+
+    font-size: 17px;
+}
+
+
+.share-info-card p {
+    margin: 5px 0;
 
     color: #777;
 
     font-size: 13px;
 }
 
-.share-message {
+
+/* =========================================================
+   フッター
+   ========================================================= */
+
+.app-footer {
     padding: 20px;
-
-    text-align: center;
-
-    color: #777;
-}
-
-.error-message {
-    padding: 40px 20px;
-
-    text-align: center;
-}
-
-.error-message h2 {
-    margin-bottom: 8px;
-}
-
-.error-message p {
-    color: #777;
-}
-
-.share-footer {
-    margin: 30px 0;
-
-    text-align: center;
 
     color: #999;
 
+    text-align: center;
+
     font-size: 12px;
 }
+
+
+.app-footer p {
+    margin: 0 0 5px;
+}
+
+
+.app-footer a {
+    color: #d86f78;
+}
+
 
 /* =========================================================
    下部ナビゲーション
    ========================================================= */
 
-.bottom-nav {
+.bottom-navigation {
     position: fixed;
 
-    left: 0;
     right: 0;
     bottom: 0;
+    left: 0;
 
     z-index: 1000;
 
@@ -1049,293 +1232,381 @@ button {
 
     justify-content: center;
 
-    background: white;
+    background: rgba(255, 255, 255, 0.97);
 
     border-top: 1px solid #eee;
 
     box-shadow:
-        0 -3px 12px rgba(0, 0, 0, 0.06);
+        0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
+
 .nav-item {
-    width: 25%;
+    display: flex;
 
-    max-width: 150px;
+    flex: 1;
 
-    padding: 9px 5px 8px;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    max-width: 120px;
+
+    min-height: 68px;
+
+    padding: 7px 4px;
 
     color: #999;
 
     text-align: center;
-
-    text-decoration: none;
 }
 
-.nav-item span {
+
+.nav-item.active {
+    color: #d86f78;
+}
+
+
+.nav-icon {
     display: block;
 
     margin-bottom: 2px;
 
-    font-size: 20px;
+    font-size: 21px;
+
+    line-height: 1;
 }
 
-.nav-item small {
+
+.nav-label {
     font-size: 11px;
+    font-weight: 600;
 }
 
-.nav-item.active {
-    color: #f09199;
-
-    font-weight: bold;
-}
 
 /* =========================================================
-   スマートフォン版
-   600px以下
+   スマートフォン
    ========================================================= */
 
 @media (max-width: 600px) {
 
     body {
-        padding-bottom: 75px;
+        padding-bottom: 82px;
     }
 
-    /* ヘッダー */
-    .header {
-        padding: 20px 15px 23px;
 
-        border-radius: 0 0 20px 20px;
+    .app-header {
+        padding: 23px 16px 20px;
     }
 
-    .header h1 {
-        font-size: 24px;
+
+    .app-header h1 {
+        font-size: 23px;
     }
 
-    .header p {
-        font-size: 13px;
+
+    .app-header p {
+        font-size: 12px;
     }
 
-    /* メイン */
-    .main {
-        width: calc(100% - 24px);
 
-        margin-top: 20px;
+    .main-content {
+        padding: 14px 12px 25px;
     }
 
-    .main h2 {
-        font-size: 19px;
+
+    .content-section {
+        margin-bottom: 14px;
+
+        padding: 15px;
+
+        border-radius: 14px;
     }
 
-    /* フォーム */
-    .form-card {
-        padding: 17px;
+
+    .section-title,
+    .section-header {
+        margin-bottom: 14px;
     }
+
+
+    .section-title h2,
+    .section-header h2 {
+        font-size: 17px;
+    }
+
 
     .form-group {
-        margin-bottom: 17px;
+        margin-bottom: 15px;
     }
 
-    /* 日程 */
-    .schedule-form {
-        padding: 14px;
-    }
 
-    /* 予算 */
-    .budget-form {
-        padding: 14px;
-    }
-
-    .budget-input-row {
-        display: grid;
-
-        grid-template-columns: 1fr auto;
-
-        gap: 8px;
-    }
-
-    .budget-category {
-        grid-column: 1 / 3;
-
-        width: 100%;
-    }
-
-    .budget-amount {
-        width: 100%;
-    }
-
-    /* 最近の旅行 */
-    .section-title {
-        align-items: flex-end;
-    }
-
-    .section-title h2 {
-        font-size: 19px;
-    }
-
-    .text-button {
+    .form-group label {
         font-size: 13px;
     }
 
-    /* 旅行カード */
-    .trip-list {
-        display: flex;
 
-        flex-direction: column;
+    .form-group input[type="text"],
+    .form-group input[type="date"],
+    .form-group input[type="number"],
+    .form-group input[type="time"],
+    .form-group select {
+        min-height: 42px;
 
-        gap: 14px;
+        padding: 9px 10px;
+
+        font-size: 13px;
     }
+
+
+    .form-group textarea {
+        font-size: 13px;
+    }
+
+
+    .date-input-row {
+        gap: 6px;
+    }
+
+
+    .date-input-row span {
+        font-size: 12px;
+    }
+
+
+    .primary-button,
+    .secondary-button,
+    .danger-button {
+        min-height: 42px;
+
+        padding: 10px 12px;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       日程
+       ----------------------------------------- */
+
+    .schedule-form {
+        padding: 12px;
+    }
+
+
+    .schedule-form .form-group {
+        margin-bottom: 12px;
+    }
+
+
+    .schedule-form input,
+    .schedule-form select {
+        height: 42px;
+
+        padding: 9px 10px;
+
+        font-size: 13px;
+    }
+
+
+    .schedule-delete-button {
+        margin-top: 12px;
+
+        padding: 9px;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+       予算
+       ----------------------------------------- */
+
+    .budget-form {
+        padding: 12px;
+    }
+
+
+    .budget-input-row {
+        gap: 7px;
+    }
+
+
+    .budget-category,
+    .budget-amount {
+        flex: 1;
+
+        width: 0;
+
+        min-width: 0;
+
+        height: 42px;
+
+        padding: 9px 8px;
+
+        font-size: 13px;
+    }
+
+
+    .budget-input-row span {
+        font-size: 13px;
+    }
+
+
+    .budget-delete-button {
+        padding: 8px;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------------------
+       旅行カード
+       ----------------------------------------- */
 
     .trip-card {
-        padding: 16px;
-    }
-
-    .trip-card h3 {
-        font-size: 18px;
+        padding: 13px;
     }
 
 
-    /* カードボタン */
+    .trip-card-header h3 {
+        font-size: 16px;
+    }
+
+
+    .trip-card-header p {
+        font-size: 12px;
+    }
+
+
     .trip-card-buttons {
-        flex-direction: column;
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
 
         gap: 8px;
     }
 
-    .detail-button,
-    .share-button {
+
+    .trip-card-buttons button {
         width: 100%;
+
+        min-width: 0;
+
+        padding: 10px 6px;
+
+        font-size: 12px;
     }
 
-    /* 共有ダイアログ */
-    .share-dialog-content {
-        width: calc(100% - 24px);
 
-        margin: 60px auto 0;
+    /* -----------------------------------------
+       設定
+       ----------------------------------------- */
 
-        padding: 20px;
+    .setting-card {
+        padding: 13px;
     }
 
-    .share-dialog-buttons {
-        flex-direction: column;
+
+    .setting-card h3 {
+        font-size: 15px;
     }
 
-    .share-dialog-buttons button {
-        width: 100%;
+
+    .setting-card p {
+        font-size: 12px;
     }
 
-    /* 共有ページ */
-    .share-main {
-        width: calc(100% - 24px);
 
-        margin-top: 20px;
+    /* -----------------------------------------
+       共有ページ
+       ----------------------------------------- */
+
+    .shared-trip-title {
+        font-size: 21px;
     }
 
-    .share-trip-card {
-        padding: 20px;
+
+    .shared-trip-date {
+        font-size: 13px;
     }
 
-    .share-trip-card h2 {
-        font-size: 22px;
+
+    .shared-schedule-card {
+        padding: 12px;
+
+        gap: 9px;
     }
 
-    .share-plan {
-        gap: 10px;
+
+    .shared-schedule-number {
+        width: 28px;
+        height: 28px;
+
+        font-size: 12px;
     }
 
-    .share-plan-time {
-        width: 50px;
+
+    .shared-schedule-type,
+    .shared-schedule-time {
+        font-size: 12px;
     }
 
-    /* 下部ナビ */
+
+    .shared-schedule-content h3 {
+        font-size: 15px;
+    }
+
+
+    .shared-schedule-content p {
+        font-size: 12px;
+    }
+
+
+    .shared-budget-item {
+        font-size: 13px;
+    }
+
+
+    .shared-budget-total {
+        font-size: 14px;
+    }
+
+
+    .shared-budget-total strong {
+        font-size: 17px;
+    }
+
+
+    /* -----------------------------------------
+       編集キャンセル
+       ----------------------------------------- */
+
+    #cancel-edit-button {
+        padding: 11px;
+
+        font-size: 13px;
+    }
+
+
+    /* -----------------------------------------
+       下部ナビ
+       ----------------------------------------- */
+
     .nav-item {
-        padding: 8px 3px 7px;
+        min-height: 62px;
     }
 
-    .nav-item span {
+
+    .nav-icon {
         font-size: 19px;
     }
 
-    .nav-item small {
+
+    .nav-label {
         font-size: 10px;
-    }
-
-}
-
-/* =========================================================
-   タブレット・小型PC
-   601px～900px
-   ========================================================= */
-
-@media (min-width: 601px) and (max-width: 900px) {
-
-    .main {
-        width: calc(100% - 40px);
-    }
-
-    .trip-list {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-}
-
-/* =========================================================
-   PC版
-   901px以上
-   ========================================================= */
-
-@media (min-width: 901px) {
-
-    body {
-        padding-bottom: 30px;
-    }
-
-    .main {
-        width: 900px;
-    }
-
-    /*
-     * 新しい旅を作るフォームは
-     * PCでも横に広がりすぎないようにする
-     */
-
-    .form-card {
-        padding: 30px 35px;
-    }
-
-    /*
-     * 旅行一覧を2列にする
-     */
-
-    .trip-list {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    /*
-     * 下部ナビをPCではページ下部に固定しない
-     */
-
-    .bottom-nav {
-        position: static;
-
-        max-width: 900px;
-
-        margin: 30px auto 0;
-
-        border-top: none;
-
-        box-shadow: none;
-
-        background: transparent;
-    }
-
-    .nav-item {
-        background: white;
-
-        margin: 0 4px;
-
-        border-radius: 12px;
     }
 
 }
