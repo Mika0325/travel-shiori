@@ -145,7 +145,7 @@ const SCHEDULE_TYPES = [
  * 日程入力欄を追加
  * ========================================================= */
 
-function addScheduleForm(schedule) {
+function addScheduleForm(schedule = null) {
 
     const scheduleList =
         document.getElementById("schedule-list");
@@ -171,7 +171,10 @@ function addScheduleForm(schedule) {
                 ${SCHEDULE_TYPES.map(function (type) {
 
         return `
-                        <option value="${type.value}">
+                        <option
+                            value="${type.value}"
+                            ${schedule && schedule.type === type.value ? "selected" : ""}
+                        >
                             ${type.label}
                         </option>
                     `;
@@ -189,6 +192,7 @@ function addScheduleForm(schedule) {
             <input
                 type="time"
                 class="schedule-time"
+                value="${schedule ? schedule.time || "" : ""}"
             >
 
         </div>
@@ -201,6 +205,7 @@ function addScheduleForm(schedule) {
                 type="text"
                 class="schedule-place"
                 placeholder="例：京都駅"
+                value="${schedule ? schedule.place || "" : ""}"
             >
 
         </div>
@@ -213,6 +218,7 @@ function addScheduleForm(schedule) {
                 type="text"
                 class="schedule-detail"
                 placeholder="例：〇〇線〇〇行き〇番ホーム"
+                value="${schedule ? schedule.detail || "" : ""}"
             >
 
         </div>
@@ -225,6 +231,7 @@ function addScheduleForm(schedule) {
                 type="text"
                 class="schedule-memo"
                 placeholder="例：10分前にホームへ"
+                value="${schedule ? schedule.memo || "" : ""}"
             >
 
         </div>
