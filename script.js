@@ -1702,8 +1702,11 @@ document.addEventListener(
 
             addScheduleButton.addEventListener(
                 "click",
-                addScheduleForm
+                function () {
+                    addScheduleForm();
+                }
             );
+
         }
 
         const addBudgetButton =
