@@ -1726,8 +1726,8 @@ function displayTripList(
 
                             日程
                             ${Array.isArray(
-                        trip.schedules
-                    )
+                            trip.schedules
+                        )
                         ? trip.schedules.length
                         : 0
                     }
@@ -1979,207 +1979,115 @@ function toggleFavorite(
     displayTrips();
 }
 
-
 /* =========================================================
    旅行を開く
    ========================================================= */
 
-function openTrip(
-    tripId
-) {
+function openTrip(tripId) {
+    const trips = getTrips();
 
-    const trips =
-        getTrips();
-
-
-    const trip =
-        trips.find(
-            function (item) {
-
-                return (
-                    String(item.id) ===
-                    String(tripId)
-                );
-
-            }
-        );
-
+    const trip = trips.find(function (item) {
+        return String(item.id) === String(tripId);
+    });
 
     if (!trip) {
         return;
     }
 
+    const detailSection = document.getElementById(
+        "trip-detail-section"
+    );
 
-    let message = "";
+    const detailContent = document.getElementById(
+        "trip-detail-content"
+    );
 
-
-    message +=
-        "【" +
-        trip.title +
-        "】\n\n";
-
-
-    message +=
-        "旅行先：" +
-        trip.destination +
-        "\n";
-
-
-    message +=
-        "日程：" +
-        formatDateRange(
-            trip.startDate,
-            trip.endDate
-        ) +
-        "\n\n";
-
-
-    /* -----------------------------------------
-       日程
-       ----------------------------------------- */
-
-    message +=
-        "【日程】\n";
-
-
-    if (
-        Array.isArray(
-            trip.schedules
-        ) &&
-        trip.schedules.length > 0
-    ) {
-
-        trip.schedules.forEach(
-            function (
-                schedule,
-                index
-            ) {
-
-                message +=
-                    (index + 1) +
-                    ". " +
-                    (
-                        schedule.time ||
-                        ""
-                    ) +
-                    " " +
-                    (
-                        schedule.type ||
-                        ""
-                    ) +
-                    "\n";
-
-
-                message +=
-                    "   " +
-                    (
-                        schedule.place ||
-                        ""
-                    ) +
-                    "\n";
-
-
-                if (
-                    schedule.detail
-                ) {
-
-                    message +=
-                        "   " +
-                        schedule.detail +
-                        "\n";
-                }
-
-
-                if (
-                    schedule.memo
-                ) {
-
-                    message +=
-                        "   メモ：" +
-                        schedule.memo +
-                        "\n";
-                }
-
-
-                message += "\n";
-
-            }
-        );
-
-    } else {
-
-        message +=
-            "登録されている日程はありません。\n\n";
+    if (!detailSection || !detailContent) {
+        return;
     }
 
+    let html = `
+        <h2>${escapeHTML(trip.title || "旅行のしおり")}</h2>
+        <p>旅行先：${escapeHTML(trip.destination || "未設定")}</p>
+        <p>日程：${escapeHTML(formatDateRange(
+        trip.startDate,
+        trip.endDate
+    ))}</p>
 
-    /* -----------------------------------------
-       予算
-       ----------------------------------------- */
+        <h3>日程</h3>
+    `;
 
-    message +=
-        "【予算】\n";
-
-
-    if (
-        Array.isArray(
-            trip.budgets
-        ) &&
-        trip.budgets.length > 0
-    ) {
-
-        trip.budgets.forEach(
-            function (budget) {
-
-                message +=
-                    (
-                        budget.category ||
-                        budget.name ||
-                        "その他"
-                    ) +
-                    "：" +
-                    formatMoney(
-                        budget.amount
-                    ) +
-                    "円\n";
-
-            }
-        );
-
-
-        message +=
-            "\n合計：" +
-            formatMoney(
-                getBudgetTotal(
-                    trip.budgets
-                )
-            ) +
-            "円\n";
-
+    if (Array.isArray(trip.schedules) && trip.schedules.length > 0) {
+        trip.schedules.forEach(function (schedule, index) {
+            html += `
+                <div class="shared-schedule-card">
+                    <div class="shared-schedule-number">
+                        ${index + 1}
+                    </div>
+                    <div class="shared-schedule-body">
+                        <p class="shared-schedule-time">
+                            ${escapeHTML(schedule.time || "")}
+                        </p>
+                        <h3 class="shared-schedule-place">
+                            ${escapeHTML(schedule.place || "場所未設定")}
+                        </h3>
+                        <p class="shared-schedule-detail">
+                            ${escapeHTML(schedule.type || "その他")}
+                            ${schedule.detail
+                    ? "：" + escapeHTML(schedule.detail)
+                    : ""}
+                        </p>
+                        ${schedule.memo
+                    ? `<p class="shared-schedule-memo">${escapeHTML(schedule.memo)}</p>`
+                    : ""}
+                    </div>
+                </div>
+            `;
+        });
     } else {
-
-        message +=
-            "登録されている予算はありません。\n";
+        html += "<p>登録されている日程はありません。</p>";
     }
 
+    html += "<h3>予算</h3>";
 
-    /* -----------------------------------------
-       メモ
-       ----------------------------------------- */
+    if (Array.isArray(trip.budgets) && trip.budgets.length > 0) {
+        trip.budgets.forEach(function (budget) {
+            html += `
+                <div class="shared-budget-row">
+                    <span>${escapeHTML(
+                budget.category || budget.name || "その他"
+            )}</span>
+                    <span>${escapeHTML(formatMoney(budget.amount))}円</span>
+                </div>
+            `;
+        });
+
+        html += `
+            <p>
+                合計：${escapeHTML(
+            formatMoney(getBudgetTotal(trip.budgets))
+        )}円
+            </p>
+        `;
+    } else {
+        html += "<p>登録されている予算はありません。</p>";
+    }
 
     if (trip.memo) {
-
-        message +=
-            "\n【メモ】\n" +
-            trip.memo;
+        html += `
+            <h3>旅行メモ</h3>
+            <p class="shared-memo">${escapeHTML(trip.memo)}</p>
+        `;
     }
 
+    detailContent.innerHTML = html;
+    detailSection.hidden = false;
 
-    alert(
-        message
-    );
+    detailSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
-
 
 /* =========================================================
    旅行削除

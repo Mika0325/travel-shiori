@@ -2,141 +2,113 @@
 <html lang="ja">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="theme-color" content="#f09199">
-
     <meta name="description" content="作成した旅行の一覧を確認できる旅のしおりアプリ">
 
     <title>旅行｜旅のしおり</title>
 
     <link rel="manifest" href="manifest.json">
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-    <!-- =========================================
-         ヘッダー
-         ========================================= -->
-
+    <!-- ヘッダー -->
     <header class="app-header">
-
         <h1>旅行</h1>
-
-        <p>
-            作成した旅のしおりを確認できます
-        </p>
-
+        <p>作成した旅のしおりを確認できます</p>
     </header>
 
-
-    <!-- =========================================
-         メイン
-         ========================================= -->
-
+    <!-- メイン -->
     <main class="main-content">
 
-
-        <!-- =====================================
-             新しい旅を作る
-             ===================================== -->
-
-        <section class="content-section">
-
+        <!-- 新しい旅を作る -->
+        <section class="content-section" id="new-trip-section">
             <a href="index.html" class="primary-button new-trip-link">
                 ＋ 新しい旅を作る
             </a>
-
         </section>
 
-
-        <!-- =====================================
-             旅行一覧
-             ===================================== -->
-
-        <section class="content-section">
-
+        <!-- 旅行一覧 -->
+        <section class="content-section" id="trip-list-section">
             <div class="section-title">
-
                 <h2>旅行一覧</h2>
-
             </div>
-
 
             <div id="travel-trip-list" class="trip-list">
-                <!-- 作成した旅行をここに表示 -->
+                <!-- 作成した旅行をJavaScriptで表示 -->
             </div>
-
         </section>
 
+        <!-- 旅行詳細 -->
+        <section class="content-section trip-detail-section" id="trip-detail-section" hidden aria-live="polite">
+            <div class="trip-detail-header">
+                <button type="button" id="close-trip-detail" class="secondary-button">
+                    ← 一覧に戻る
+                </button>
+            </div>
+
+            <div id="trip-detail-content">
+                <!-- 選択した旅行の詳細を表示 -->
+            </div>
+        </section>
 
     </main>
 
-
-    <!-- =========================================
-         下部ナビゲーション
-         ========================================= -->
-
-    <nav class="bottom-navigation">
+    <!-- 下部ナビゲーション：全画面共通 -->
+    <nav class="bottom-navigation" aria-label="メインナビゲーション">
 
         <a href="index.html" class="nav-item">
-
             <span class="nav-icon">🏠</span>
-
-            <span class="nav-label">
-                ホーム
-            </span>
-
+            <span class="nav-label">ホーム</span>
         </a>
 
-
-        <a href="travel.html" class="nav-item active">
-
+        <a href="travel.html" class="nav-item active" aria-current="page">
             <span class="nav-icon">🗺️</span>
-
-            <span class="nav-label">
-                旅行
-            </span>
-
+            <span class="nav-label">旅行</span>
         </a>
-
 
         <a href="favorite.html" class="nav-item">
-
             <span class="nav-icon">☆</span>
-
-            <span class="nav-label">
-                お気に入り
-            </span>
-
+            <span class="nav-label">お気に入り</span>
         </a>
 
-
         <a href="setting.html" class="nav-item">
-
             <span class="nav-icon">⚙️</span>
-
-            <span class="nav-label">
-                設定
-            </span>
-
+            <span class="nav-label">設定</span>
         </a>
 
     </nav>
 
-
-    <!-- =========================================
-         JavaScript
-         ========================================= -->
-
     <script src="script.js"></script>
 
+    <!-- 詳細画面と一覧画面の切り替え -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const closeButton = document.getElementById("close-trip-detail");
+            const detailSection = document.getElementById("trip-detail-section");
+            const listSection = document.getElementById("trip-list-section");
+            const newTripSection = document.getElementById("new-trip-section");
+
+            if (closeButton && detailSection && listSection) {
+                closeButton.addEventListener("click", function () {
+                    detailSection.hidden = true;
+                    listSection.hidden = false;
+
+                    if (newTripSection) {
+                        newTripSection.hidden = false;
+                    }
+
+                    listSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 
