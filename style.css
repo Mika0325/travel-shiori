@@ -8,14 +8,12 @@
     box-sizing: border-box;
 }
 
-
 html {
     margin: 0;
     padding: 0;
 
     background: #fff8f8;
 }
-
 
 body {
     margin: 0;
@@ -38,7 +36,6 @@ body {
     line-height: 1.6;
 }
 
-
 /* =========================================================
    共通リンク
    ========================================================= */
@@ -47,7 +44,6 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
 
 /* =========================================================
    ヘッダー
@@ -63,14 +59,12 @@ a {
     text-align: center;
 }
 
-
 .app-header h1 {
     margin: 0;
 
     font-size: 26px;
     font-weight: 700;
 }
-
 
 .app-header p {
     margin: 6px 0 0;
@@ -79,7 +73,6 @@ a {
 
     opacity: 0.95;
 }
-
 
 /* =========================================================
    メイン
@@ -93,7 +86,6 @@ a {
 
     padding: 20px 16px 30px;
 }
-
 
 /* =========================================================
    セクション
@@ -113,7 +105,6 @@ a {
         0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-
 .section-title,
 .section-header {
     display: flex;
@@ -126,7 +117,6 @@ a {
     margin-bottom: 18px;
 }
 
-
 .section-title h2,
 .section-header h2 {
     margin: 0;
@@ -137,14 +127,12 @@ a {
     font-weight: 700;
 }
 
-
 .section-link {
     color: #d86f78;
 
     font-size: 13px;
     font-weight: 600;
 }
-
 
 /* =========================================================
    フォーム
@@ -154,11 +142,9 @@ a {
     margin-bottom: 18px;
 }
 
-
 .form-group:last-child {
     margin-bottom: 0;
 }
-
 
 .form-group label {
     display: block;
@@ -170,7 +156,6 @@ a {
     font-size: 14px;
     font-weight: 600;
 }
-
 
 .form-group input[type="text"],
 .form-group input[type="date"],
@@ -198,7 +183,6 @@ a {
         box-shadow 0.2s;
 }
 
-
 .form-group input[type="text"],
 .form-group input[type="date"],
 .form-group input[type="number"],
@@ -207,13 +191,11 @@ a {
     min-height: 44px;
 }
 
-
 .form-group textarea {
     resize: vertical;
 
     min-height: 110px;
 }
-
 
 .form-group input:focus,
 .form-group select:focus,
@@ -224,12 +206,10 @@ a {
         0 0 0 2px rgba(240, 145, 153, 0.15);
 }
 
-
 .form-group input::placeholder,
 .form-group textarea::placeholder {
     color: #aaa;
 }
-
 
 /* =========================================================
    日付入力
@@ -243,13 +223,11 @@ a {
     gap: 8px;
 }
 
-
 .date-input-row input {
     flex: 1;
 
     min-width: 0;
 }
-
 
 .date-input-row span {
     flex-shrink: 0;
@@ -259,7 +237,6 @@ a {
     font-size: 14px;
 }
 
-
 /* =========================================================
    ボタン共通
    ========================================================= */
@@ -267,7 +244,6 @@ a {
 button {
     font-family: inherit;
 }
-
 
 .primary-button,
 .secondary-button,
@@ -294,7 +270,6 @@ button {
         transform 0.1s;
 }
 
-
 .primary-button {
     width: 100%;
 
@@ -304,18 +279,15 @@ button {
     color: #fff;
 }
 
-
 .primary-button:hover {
     background: #e67f88;
 }
-
 
 .primary-button:active,
 .secondary-button:active,
 .danger-button:active {
     transform: scale(0.98);
 }
-
 
 .secondary-button {
     width: 100%;
@@ -326,11 +298,9 @@ button {
     color: #d86f78;
 }
 
-
 .secondary-button:hover {
     background: #fff4f5;
 }
-
 
 .danger-button {
     width: 100%;
@@ -341,11 +311,9 @@ button {
     color: #c85f68;
 }
 
-
 .danger-button:hover {
     background: #fff4f5;
 }
-
 
 /* =========================================================
    新しい旅を作るリンク
@@ -354,7 +322,6 @@ button {
 .new-trip-link {
     text-decoration: none;
 }
-
 
 /* =========================================================
    日程入力
@@ -370,7 +337,6 @@ button {
     margin-bottom: 12px;
 }
 
-
 .schedule-form {
     padding: 16px;
 
@@ -380,16 +346,13 @@ button {
     border-radius: 14px;
 }
 
-
 .schedule-form .form-group {
     margin-bottom: 14px;
 }
 
-
 .schedule-form .form-group:last-of-type {
     margin-bottom: 0;
 }
-
 
 .schedule-form label {
     display: block;
@@ -401,7 +364,6 @@ button {
     font-size: 13px;
     font-weight: 600;
 }
-
 
 .schedule-form input,
 .schedule-form select {
@@ -423,7 +385,6 @@ button {
     outline: none;
 }
 
-
 .schedule-form input:focus,
 .schedule-form select:focus {
     border-color: #f09199;
@@ -431,7 +392,6 @@ button {
     box-shadow:
         0 0 0 2px rgba(240, 145, 153, 0.15);
 }
-
 
 .schedule-delete-button {
     width: 100%;
@@ -452,13 +412,11 @@ button {
     cursor: pointer;
 }
 
-
 .schedule-delete-button:hover {
     background: #f7f7f7;
 
     border-color: #ccc;
 }
-
 
 /* =========================================================
    予算入力
@@ -474,7 +432,6 @@ button {
     margin-bottom: 12px;
 }
 
-
 .budget-form {
     padding: 16px;
 
@@ -483,7 +440,6 @@ button {
     border: 1px solid #f4d5d8;
     border-radius: 14px;
 }
-
 
 .budget-input-row {
     display: flex;
@@ -494,7 +450,6 @@ button {
 
     gap: 10px;
 }
-
 
 .budget-category {
     flex: 1;
@@ -516,7 +471,6 @@ button {
 
     outline: none;
 }
-
 
 .budget-amount {
     flex: 1;
@@ -541,7 +495,6 @@ button {
     outline: none;
 }
 
-
 .budget-input-row span {
     flex-shrink: 0;
 
@@ -550,7 +503,6 @@ button {
     font-size: 14px;
 }
 
-
 .budget-category:focus,
 .budget-amount:focus {
     border-color: #f09199;
@@ -558,7 +510,6 @@ button {
     box-shadow:
         0 0 0 2px rgba(240, 145, 153, 0.15);
 }
-
 
 .budget-delete-button {
     width: 100%;
@@ -579,13 +530,11 @@ button {
     cursor: pointer;
 }
 
-
 .budget-delete-button:hover {
     background: #f7f7f7;
 
     border-color: #ccc;
 }
-
 
 /* =========================================================
    旅行一覧
@@ -599,7 +548,6 @@ button {
     gap: 14px;
 }
 
-
 .trip-card {
     padding: 16px;
 
@@ -612,7 +560,6 @@ button {
         0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
-
 .trip-card-header {
     display: flex;
 
@@ -622,7 +569,6 @@ button {
     gap: 10px;
 }
 
-
 .trip-card-header h3 {
     margin: 0;
 
@@ -631,7 +577,6 @@ button {
     font-size: 18px;
 }
 
-
 .trip-card-header p {
     margin: 4px 0 0;
 
@@ -639,7 +584,6 @@ button {
 
     font-size: 13px;
 }
-
 
 .favorite-button {
     flex-shrink: 0;
@@ -661,11 +605,9 @@ button {
     cursor: pointer;
 }
 
-
 .favorite-button:hover {
     background: #ffecef;
 }
-
 
 .trip-date {
     margin: 12px 0 0;
@@ -674,7 +616,6 @@ button {
 
     font-size: 13px;
 }
-
 
 .trip-card .trip-memo {
     display: block;
@@ -694,7 +635,6 @@ button {
     white-space: pre-wrap;
 }
 
-
 .trip-summary {
     display: flex;
 
@@ -704,7 +644,6 @@ button {
 
     margin-top: 12px;
 }
-
 
 .trip-summary span {
     padding: 5px 9px;
@@ -717,7 +656,6 @@ button {
 
     font-size: 12px;
 }
-
 
 /* =========================================================
    旅行カードのボタン
@@ -732,7 +670,6 @@ button {
 
     margin-top: 16px;
 }
-
 
 .trip-card-buttons button {
     flex: 1;
@@ -749,7 +686,6 @@ button {
     cursor: pointer;
 }
 
-
 .view-trip-button {
     border: none;
 
@@ -757,11 +693,9 @@ button {
     color: #fff;
 }
 
-
 .view-trip-button:hover {
     background: #e67f88;
 }
-
 
 .edit-trip-button {
     border: 1px solid #f09199;
@@ -770,11 +704,9 @@ button {
     color: #d86f78;
 }
 
-
 .edit-trip-button:hover {
     background: #fff4f5;
 }
-
 
 .share-trip-button {
     border: 1px solid #ddd;
@@ -783,11 +715,9 @@ button {
     color: #666;
 }
 
-
 .share-trip-button:hover {
     background: #f7f7f7;
 }
-
 
 .delete-trip-button {
     border: 1px solid #ddd;
@@ -796,11 +726,9 @@ button {
     color: #777;
 }
 
-
 .delete-trip-button:hover {
     background: #f7f7f7;
 }
-
 
 /* =========================================================
    空の一覧
@@ -817,7 +745,6 @@ button {
 
     text-align: center;
 }
-
 
 /* =========================================================
    編集モード
@@ -842,13 +769,11 @@ button {
     cursor: pointer;
 }
 
-
 #cancel-edit-button:hover {
     background: #f8f8f8;
 
     border-color: #ccc;
 }
-
 
 /* =========================================================
    設定ページ
@@ -863,7 +788,6 @@ button {
     border-radius: 12px;
 }
 
-
 .setting-card h3 {
     margin: 0 0 8px;
 
@@ -871,7 +795,6 @@ button {
 
     font-size: 16px;
 }
-
 
 .setting-card p {
     margin: 0 0 10px;
@@ -881,11 +804,9 @@ button {
     font-size: 13px;
 }
 
-
 .setting-card p:last-child {
     margin-bottom: 0;
 }
-
 
 /* =========================================================
    共有ページ
@@ -897,7 +818,6 @@ button {
     text-align: center;
 }
 
-
 .share-message h2 {
     margin: 0 0 10px;
 
@@ -905,7 +825,6 @@ button {
 
     font-size: 19px;
 }
-
 
 .share-message p {
     margin: 0 0 18px;
@@ -915,16 +834,13 @@ button {
     font-size: 14px;
 }
 
-
 .error-message {
     color: #777;
 }
 
-
 .shared-trip-header {
     text-align: center;
 }
-
 
 .shared-destination {
     margin: 0 0 4px;
@@ -935,7 +851,6 @@ button {
     font-weight: 600;
 }
 
-
 .shared-trip-title {
     margin: 0;
 
@@ -944,7 +859,6 @@ button {
     font-size: 25px;
 }
 
-
 .shared-trip-date {
     margin: 8px 0 0;
 
@@ -952,7 +866,6 @@ button {
 
     font-size: 14px;
 }
-
 
 /* =========================================================
    共有日程
@@ -966,7 +879,6 @@ button {
     gap: 12px;
 }
 
-
 .shared-schedule-card {
     display: flex;
 
@@ -979,7 +891,6 @@ button {
     border: 1px solid #f4d5d8;
     border-radius: 12px;
 }
-
 
 .shared-schedule-number {
     display: flex;
@@ -1001,13 +912,11 @@ button {
     font-weight: 700;
 }
 
-
 .shared-schedule-content {
     flex: 1;
 
     min-width: 0;
 }
-
 
 .shared-schedule-top {
     display: flex;
@@ -1020,14 +929,12 @@ button {
     margin-bottom: 5px;
 }
 
-
 .shared-schedule-type {
     color: #d86f78;
 
     font-size: 13px;
     font-weight: 600;
 }
-
 
 .shared-schedule-time {
     color: #666;
@@ -1036,7 +943,6 @@ button {
     font-weight: 600;
 }
 
-
 .shared-schedule-content h3 {
     margin: 0 0 4px;
 
@@ -1044,7 +950,6 @@ button {
 
     font-size: 16px;
 }
-
 
 .shared-schedule-content p {
     margin: 3px 0;
@@ -1056,7 +961,6 @@ button {
     white-space: pre-wrap;
 }
 
-
 .shared-schedule-content .shared-schedule-memo {
     margin-top: 8px;
 
@@ -1066,7 +970,6 @@ button {
 
     text-align: left;
 }
-
 
 /* =========================================================
    共有予算
@@ -1079,7 +982,6 @@ button {
 
     gap: 8px;
 }
-
 
 .shared-budget-item {
     display: flex;
@@ -1098,18 +1000,15 @@ button {
     font-size: 14px;
 }
 
-
 .shared-budget-item:last-child {
     border-bottom: none;
 }
-
 
 .shared-budget-item strong {
     color: #555;
 
     white-space: nowrap;
 }
-
 
 .shared-budget-total {
     display: flex;
@@ -1131,13 +1030,11 @@ button {
     font-weight: 700;
 }
 
-
 .shared-budget-total strong {
     color: #d86f78;
 
     font-size: 18px;
 }
-
 
 /* =========================================================
    共有メモ
@@ -1160,7 +1057,6 @@ button {
     text-align: left;
 }
 
-
 /* =========================================================
    共有情報
    ========================================================= */
@@ -1176,7 +1072,6 @@ button {
     text-align: center;
 }
 
-
 .share-info-card h2 {
     margin: 0 0 8px;
 
@@ -1185,7 +1080,6 @@ button {
     font-size: 17px;
 }
 
-
 .share-info-card p {
     margin: 5px 0;
 
@@ -1193,7 +1087,6 @@ button {
 
     font-size: 13px;
 }
-
 
 /* =========================================================
    フッター
@@ -1209,16 +1102,13 @@ button {
     font-size: 12px;
 }
 
-
 .app-footer p {
     margin: 0 0 5px;
 }
 
-
 .app-footer a {
     color: #d86f78;
 }
-
 
 /* =========================================================
    下部ナビゲーション
@@ -1245,7 +1135,6 @@ button {
         0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
-
 .nav-item {
     display: flex;
 
@@ -1267,11 +1156,9 @@ button {
     text-align: center;
 }
 
-
 .nav-item.active {
     color: #d86f78;
 }
-
 
 .nav-icon {
     display: block;
@@ -1283,12 +1170,10 @@ button {
     line-height: 1;
 }
 
-
 .nav-label {
     font-size: 11px;
     font-weight: 600;
 }
-
 
 /* =========================================================
    スマートフォン
@@ -1300,26 +1185,21 @@ button {
         padding-bottom: 82px;
     }
 
-
     .app-header {
         padding: 23px 16px 20px;
     }
-
 
     .app-header h1 {
         font-size: 23px;
     }
 
-
     .app-header p {
         font-size: 12px;
     }
 
-
     .main-content {
         padding: 14px 12px 25px;
     }
-
 
     .content-section {
         margin-bottom: 14px;
@@ -1329,28 +1209,23 @@ button {
         border-radius: 14px;
     }
 
-
     .section-title,
     .section-header {
         margin-bottom: 14px;
     }
-
 
     .section-title h2,
     .section-header h2 {
         font-size: 17px;
     }
 
-
     .form-group {
         margin-bottom: 15px;
     }
 
-
     .form-group label {
         font-size: 13px;
     }
-
 
     .form-group input[type="text"],
     .form-group input[type="date"],
@@ -1364,21 +1239,17 @@ button {
         font-size: 13px;
     }
 
-
     .form-group textarea {
         font-size: 13px;
     }
-
 
     .date-input-row {
         gap: 6px;
     }
 
-
     .date-input-row span {
         font-size: 12px;
     }
-
 
     .primary-button,
     .secondary-button,
@@ -1390,7 +1261,6 @@ button {
         font-size: 13px;
     }
 
-
     /* -----------------------------------------
        日程
        ----------------------------------------- */
@@ -1399,11 +1269,9 @@ button {
         padding: 12px;
     }
 
-
     .schedule-form .form-group {
         margin-bottom: 12px;
     }
-
 
     .schedule-form input,
     .schedule-form select {
@@ -1414,7 +1282,6 @@ button {
         font-size: 13px;
     }
 
-
     .schedule-delete-button {
         margin-top: 12px;
 
@@ -1422,7 +1289,6 @@ button {
 
         font-size: 12px;
     }
-
 
     /* -----------------------------------------
        予算
@@ -1432,11 +1298,9 @@ button {
         padding: 12px;
     }
 
-
     .budget-input-row {
         gap: 7px;
     }
-
 
     .budget-category,
     .budget-amount {
@@ -1453,18 +1317,15 @@ button {
         font-size: 13px;
     }
 
-
     .budget-input-row span {
         font-size: 13px;
     }
-
 
     .budget-delete-button {
         padding: 8px;
 
         font-size: 12px;
     }
-
 
     /* -----------------------------------------
        旅行カード
@@ -1474,16 +1335,13 @@ button {
         padding: 13px;
     }
 
-
     .trip-card-header h3 {
         font-size: 16px;
     }
 
-
     .trip-card-header p {
         font-size: 12px;
     }
-
 
     .trip-card-buttons {
         display: grid;
@@ -1493,7 +1351,6 @@ button {
 
         gap: 8px;
     }
-
 
     .trip-card-buttons button {
         width: 100%;
@@ -1505,7 +1362,6 @@ button {
         font-size: 12px;
     }
 
-
     /* -----------------------------------------
        設定
        ----------------------------------------- */
@@ -1514,16 +1370,13 @@ button {
         padding: 13px;
     }
 
-
     .setting-card h3 {
         font-size: 15px;
     }
 
-
     .setting-card p {
         font-size: 12px;
     }
-
 
     /* -----------------------------------------
        共有ページ
@@ -1533,18 +1386,15 @@ button {
         font-size: 21px;
     }
 
-
     .shared-trip-date {
         font-size: 13px;
     }
-
 
     .shared-schedule-card {
         padding: 12px;
 
         gap: 9px;
     }
-
 
     .shared-schedule-number {
         width: 28px;
@@ -1553,37 +1403,30 @@ button {
         font-size: 12px;
     }
 
-
     .shared-schedule-type,
     .shared-schedule-time {
         font-size: 12px;
     }
 
-
     .shared-schedule-content h3 {
         font-size: 15px;
     }
-
 
     .shared-schedule-content p {
         font-size: 12px;
     }
 
-
     .shared-budget-item {
         font-size: 13px;
     }
-
 
     .shared-budget-total {
         font-size: 14px;
     }
 
-
     .shared-budget-total strong {
         font-size: 17px;
     }
-
 
     /* -----------------------------------------
        編集キャンセル
@@ -1595,7 +1438,6 @@ button {
         font-size: 13px;
     }
 
-
     /* -----------------------------------------
        下部ナビ
        ----------------------------------------- */
@@ -1604,11 +1446,9 @@ button {
         min-height: 62px;
     }
 
-
     .nav-icon {
         font-size: 19px;
     }
-
 
     .nav-label {
         font-size: 10px;
